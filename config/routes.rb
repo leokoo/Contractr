@@ -6,6 +6,7 @@ Rails.application.routes.draw do
               :controllers => {:omniauth_callbacks => 'omniauth_callbacks',
                                 :registrations => 'registrations'
                               }
+get "/auth/:provider/callback" => "authentications#create"
 
   resources :users, only: [:show]
   # The priority is based upon order of creation: first created -> highest priority.
