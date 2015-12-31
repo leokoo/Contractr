@@ -26,6 +26,11 @@ class JobsController < ApplicationController
   	@jobs = Job.search(query).to_a.flatten.uniq
   end
 
+  def destroy
+  	@job = Job.find(params[:id])
+  	@job.destroy
+  end
+
   private
 
   def job_params

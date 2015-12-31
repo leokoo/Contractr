@@ -20,6 +20,10 @@
 			<h3><%=i%>. <%=job.name%></h3>
 			<label>Pay Offer: </label><%= job.pay_offer%><br>
 			<label>by</label> <%= user.fullname%><br>
+			<%= link_to "Edit", jobs_path, method: :delete, class: "btn btn-default"%>
+			<%= link_to jobs_path, method: :delete, class: "btn btn-default" do %>
+			    <i class="glyphicon glyphicon-remove"></i>
+			<% end %>
 		</div>
 		<% i = i+1%>
 	<%end%>
