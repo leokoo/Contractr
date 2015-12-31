@@ -26,57 +26,6 @@ ActiveRecord::Schema.define(version: 20151230163834) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
-  create_table "photos", force: :cascade do |t|
-    t.integer  "room_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-  end
-
-  add_index "photos", ["room_id"], name: "index_photos_on_room_id", using: :btree
-
-  create_table "reservations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "room_id"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.integer  "price"
-    t.integer  "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "reservations", ["room_id"], name: "index_reservations_on_room_id", using: :btree
-  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
-
-  create_table "rooms", force: :cascade do |t|
-    t.string   "home_type"
-    t.string   "room_type"
-    t.integer  "accomodate"
-    t.integer  "bed_room"
-    t.integer  "bath_room"
-    t.string   "listing_name"
-    t.text     "summary"
-    t.string   "address"
-    t.boolean  "is_tv"
-    t.boolean  "is_kitchen"
-    t.boolean  "is_air"
-    t.boolean  "is_heating"
-    t.boolean  "is_internet"
-    t.integer  "price"
-    t.boolean  "active"
-    t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.float    "latitude"
-    t.float    "longitude"
-  end
-
-  add_index "rooms", ["user_id"], name: "index_rooms_on_user_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -106,8 +55,4 @@ ActiveRecord::Schema.define(version: 20151230163834) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "identities", "users"
-  add_foreign_key "photos", "rooms"
-  add_foreign_key "reservations", "rooms"
-  add_foreign_key "reservations", "users"
-  add_foreign_key "rooms", "users"
 end
