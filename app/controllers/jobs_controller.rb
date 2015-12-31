@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  before_action :set_jobs, only: [:show, :edit, :update, :destroy]
   def new
   	@job = Job.new
   end
@@ -13,11 +14,12 @@ class JobsController < ApplicationController
   end
 
   def edit
-  	@job = Job.find(params[:id])
+  end
+
+  def show
   end
 
   def update
-  	@job = Job.find(params[:id])
   	@job.update(job_params)
     Job.reindex
 
@@ -30,7 +32,6 @@ class JobsController < ApplicationController
   end
 
   def destroy
-  	@job = Job.find(params[:id])
   	@job.destroy
     Job.reindex
 
@@ -38,6 +39,9 @@ class JobsController < ApplicationController
   end
 
   private
+  def set_jobs
+    @job = Job.find(params[:id])
+  end
 
   def job_params
   	params.require(:job).permit(:name, :pay_offer)
