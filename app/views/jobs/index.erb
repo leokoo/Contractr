@@ -17,7 +17,7 @@
 	<%@jobs.each do |job|%>
 		<% user= job.user%>
 		<div class="col-sm-6">
-			<h3><%=i%>. <%=job.name%></h3>
+			<h3><%=i%>. <a href="/jobs/<%= job.id %>"><%=job.name%></a></h3>
 			<label>Pay Offer: </label><%= job.pay_offer%><br>
 			<label>by</label> <%= user.fullname%><br>
 				<% if current_user.id == user.id %>
