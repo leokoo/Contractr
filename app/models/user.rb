@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
   validates :fullname, presence: true, length: {maximum: 50}
   # validates :email, uniqueness: true, allow_nil: true
 
-   def self.from_omniauth(auth)
-    user = User.where(email: auth.info.email).first
+  has_many :jobs
+
+  def self.from_omniauth(auth)
+  	user = User.where(email: auth.info.email).first
 
     if user
       return user
