@@ -20,6 +20,12 @@
 		<h3><%=i%>. <a href="/jobs/<%= job.id %>"><%=job.name%></a></h3>
 		<label>Pay Offer: </label><%= job.pay_offer%><br>
 		<label>by</label> <%= user.fullname%><br>
+			<% if job.bids.count != 0 %>
+				<label>Bids: </label><%= job.bids.count %>
+			<% else %>
+				<label>No Bids Yet</label>
+			<% end %>
+
 			<% if current_user.id == user.id %>
 				<%= link_to "Edit", edit_job_path(job), class: "btn btn-default" %>
 				<%= link_to job_path(job), method: :delete, class: "btn btn-default" do %>
