@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bids
   root 'pages#home'
   devise_for  :users, 
               :path => '', 
