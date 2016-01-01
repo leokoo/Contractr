@@ -7,7 +7,8 @@ class BidsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:job_id])
+    #we cannot show :job_id
+    # @job = Job.find(params[:job_id])
   end
 
   def new
@@ -33,7 +34,7 @@ class BidsController < ApplicationController
 
   def destroy
     @bid.destroy
-    redirect_to job_bids_path
+    redirect_to job_bids_path(@bid.job_id)
   end
 
   private
