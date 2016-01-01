@@ -12,4 +12,13 @@ Job Owner : <%= @job.user.fullname %> <br><br>
 	    <i class="glyphicon glyphicon-remove"></i>
 		<% end %>
 	<% end %>
+<br><br>
+	<div>
+		<% if @job.bids.count != 0 %>
+			<label>Current Bids</label>
+			<% @job.bids.each do |bid|  %>
+				<%= bid.user.fullname %>
+			<% end %>
+		<% end %>
+	</div>
 </div>

@@ -14,6 +14,7 @@ class BidsController < ApplicationController
   def new
     @job = Job.find(params[:job_id])
     @bid = @job.bids.new
+    @bid.user_id = current_user.id
   end
 
   def edit
@@ -22,6 +23,7 @@ class BidsController < ApplicationController
   def create
     @job = Job.find(params[:job_id])
     @bid = @job.bids.new(bid_params)
+    @bid.user_id = current_user.id
     if @bid.save
       redirect_to @bid
     else
