@@ -1,28 +1,23 @@
 class BidsController < ApplicationController
   before_action :set_bid, only: [:show, :edit, :update, :destroy]
 
-  # GET /bids
-  # GET /bids.json
   def index
+    @job = Job.find(params[:job_id])
     @bids = Bid.all
   end
 
-  # GET /bids/1
-  # GET /bids/1.json
   def show
+    @job = Job.find(params[:job_id])
   end
 
-  # GET /bids/new
   def new
     @job = Job.find(params[:job_id])
     @bid = @job.bids.new
   end
 
-  # GET /bids/1/edit
   def edit
   end
 
-  # POST /bids
   def create
     @job = Job.find(params[:job_id])
     @bid = @job.bids.new(bid_params)
@@ -33,14 +28,12 @@ class BidsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bids/1
-  # PATCH/PUT /bids/1.json
   def update
   end
 
-  # DELETE /bids/1
-  # DELETE /bids/1.json
   def destroy
+    @bid.destroy
+    redirect_to job_bids_path
   end
 
   private
