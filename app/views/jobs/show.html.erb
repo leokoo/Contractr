@@ -3,7 +3,8 @@ Job pay : <%= @job.pay_offer %><br>
 
 by
 Job Owner : <%= @job.user.fullname %> <br><br>
-
-<% if current_user.id != @job.user.id %>
-	Bid now
-<% end %>
+<div class="col-sm-3">
+	<% if current_user.id != @job.user.id %>
+		<%= link_to 'New Bid', new_bid_path, class: "btn btn-default" %>
+	<% end %>
+</div>
