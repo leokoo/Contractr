@@ -1,6 +1,6 @@
 class Job < ActiveRecord::Base
 	
-	has_many :users, through :bids
+	belongs_to :user
 	has_many :bids
 
 	searchkick
