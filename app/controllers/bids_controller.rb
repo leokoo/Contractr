@@ -23,41 +23,24 @@ class BidsController < ApplicationController
   end
 
   # POST /bids
-  # POST /bids.json
   def create
-    respond_to do |format|
-      if @bid.save
-        format.html { redirect_to @bid, notice: 'Bid was successfully created.' }
-        format.json { render :show, status: :created, location: @bid }
-      else
-        format.html { render :new }
-        format.json { render json: @bid.errors, status: :unprocessable_entity }
-      end
+    @job = Job.find(params[:job_id])
+    @bid = @job.bids.new(bid_params)
+    if @bid.save
+      redirect_to @bid
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /bids/1
   # PATCH/PUT /bids/1.json
   def update
-    respond_to do |format|
-      if @bid.update(bid_params)
-        format.html { redirect_to @bid, notice: 'Bid was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bid }
-      else
-        format.html { render :edit }
-        format.json { render json: @bid.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /bids/1
   # DELETE /bids/1.json
   def destroy
-    @bid.destroy
-    respond_to do |format|
-      format.html { redirect_to bids_url, notice: 'Bid was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private
