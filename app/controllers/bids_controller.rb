@@ -14,7 +14,8 @@ class BidsController < ApplicationController
 
   # GET /bids/new
   def new
-    @bid = Bid.new
+    @job = Job.find(params[:job_id])
+    @bid = @job.bids.new
   end
 
   # GET /bids/1/edit
@@ -24,9 +25,6 @@ class BidsController < ApplicationController
   # POST /bids
   # POST /bids.json
   def create
-    
-    # @bid = Bid.new(bid_params)
-
     respond_to do |format|
       if @bid.save
         format.html { redirect_to @bid, notice: 'Bid was successfully created.' }

@@ -8,11 +8,10 @@ Rails.application.routes.draw do
                                 :registrations => 'registrations'
                               }
 resources :jobs do
-    resources :bids, only: [:index, :new, :create]
+    resources :bids, shallow: true
   end
 
-  resources :bids, only: [:show, :edit, :update, :destroy]
-  resources :users, only: [:show]
+resources :users, only: [:show]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,5 +1,4 @@
-<%= form_for(@bid) do |f| %>
-
+<%= form_for([@job, @bid]) do |f| %>
   <div class="field">
     <%= f.label :bid_value %><br>
     <%= f.number_field :bid_value %>
@@ -8,3 +7,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+
