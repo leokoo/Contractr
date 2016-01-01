@@ -24,7 +24,8 @@ class BidsController < ApplicationController
   # POST /bids
   # POST /bids.json
   def create
-    @bid = Bid.new(bid_params)
+    
+    # @bid = Bid.new(bid_params)
 
     respond_to do |format|
       if @bid.save

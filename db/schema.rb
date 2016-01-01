@@ -19,10 +19,12 @@ ActiveRecord::Schema.define(version: 20160101095830) do
   create_table "bids", force: :cascade do |t|
     t.integer  "bid_value"
     t.integer  "user_id"
+    t.integer  "job_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "bids", ["job_id"], name: "index_bids_on_job_id", using: :btree
   add_index "bids", ["user_id"], name: "index_bids_on_user_id", using: :btree
 
   create_table "identities", force: :cascade do |t|
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160101095830) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "bids", "jobs"
   add_foreign_key "bids", "users"
   add_foreign_key "identities", "users"
 end
