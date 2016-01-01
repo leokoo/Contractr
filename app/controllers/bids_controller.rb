@@ -30,6 +30,11 @@ class BidsController < ApplicationController
   end
 
   def update
+    if @bid.update(bid_params)
+      redirect_to @bid
+    else
+      render :edit
+    end
   end
 
   def destroy
