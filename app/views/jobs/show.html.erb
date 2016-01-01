@@ -4,4 +4,6 @@ Job pay : <%= @job.pay_offer %><br>
 by
 Job Owner : <%= @job.user.fullname %> <br><br>
 
-Job Bidder
+<% if current_user.id != @job.user.id %>
+	Bid now
+<% end %>
