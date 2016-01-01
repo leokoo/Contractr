@@ -1,4 +1,4 @@
-Job title : <%= @job.name %><br>
+<h3><%= @job.name %></h3><br>
 Job pay : <%= @job.pay_offer %><br>
 
 by
@@ -6,5 +6,10 @@ Job Owner : <%= @job.user.fullname %> <br><br>
 <div class="col-sm-3">
 	<% if current_user.id != @job.user.id %>
 		<%= link_to 'New Bid', new_bid_path, class: "btn btn-default" %>
+	<% else %>
+		<%= link_to "Edit", edit_job_path, class: "btn btn-default" %>
+		<%= link_to job_path, method: :delete, class: "btn btn-default" do %>
+	    <i class="glyphicon glyphicon-remove"></i>
+		<% end %>
 	<% end %>
 </div>
