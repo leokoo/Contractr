@@ -7,12 +7,11 @@ Rails.application.routes.draw do
               :controllers => {:omniauth_callbacks => 'omniauth_callbacks',
                                 :registrations => 'registrations'
                               }
-  resources :jobs do
+resources :jobs do
     resources :bids, only: [:index, :new, :create]
   end
 
   resources :bids, only: [:show, :edit, :update, :destroy]
-  
   resources :users, only: [:show]
 
 
