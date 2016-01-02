@@ -37,12 +37,15 @@ Job Status :
 
 
 
-	<!-- Attempting	to prevent new bids to be lodged when there is a winner -->
+	<!-- To prevent new bids to be lodged when there is a winner -->
 
 		<% elsif @job.bids.where(user_id: current_user.id).count != 0  %>
 			<% @job.bids.each do |bid| %>
 				<% if bid.user_id == current_user.id %>
-					<%= link_to 'Edit Your Bid', edit_bid_path(bid), class: "btn btn-default" %>
+					<% if @winner == true %>
+					<% else %>
+						<%= link_to 'Edit Your Bid', edit_bid_path(bid), class: "btn btn-default" %>
+					<% end %>
 				<% end %>
 			<% end %>
 		<% end %>
