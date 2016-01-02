@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'pages#home'
   devise_for  :users, 
               :path => '', 
@@ -6,10 +7,12 @@ Rails.application.routes.draw do
               :controllers => {:omniauth_callbacks => 'omniauth_callbacks',
                                 :registrations => 'registrations'
                               }
+resources :jobs do
+    resources :bids, shallow: true
+  end
 
-  resources :jobs
+resources :users, only: [:show]
 
-  resources :users, only: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
