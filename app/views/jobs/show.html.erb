@@ -18,6 +18,7 @@ Job Owner : <%= @job.user.fullname %> <br><br>
 	    <i class="glyphicon glyphicon-remove"></i>
 		<% end %>
 	<% end %>
+	<%= link_to "Back", jobs_path, class: "btn btn-default" %>
 <br><br>
 	<div>
 		<% if @job.bids.count != 0 %>
