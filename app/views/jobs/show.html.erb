@@ -2,19 +2,25 @@
 <h3><%= @job.name %></h3><br>
 Job Pay : <%= @job.pay_offer %><br>
 Job Owner : <%= @job.user.fullname %> <br>
-Job Status : 
+Job Status :
 	<% if @job.job_status == 0 %>
 		Open for bidding
-	<% elsif @job.status == 1 %>
+	<% elsif @job.job_status == 1 %>
 		Bidding closed	
 	<% end %>
 </div>
 <!-- This part on top works! It works to show the status of the job -->
+<% byebug %>
 
 		<% if @job.bids.count != 0 %>
 			<% @job.bids.each do |bid|  %>
 				<% if bid.bid_status == 1 %>
 					<% bid.job.bids.where(bid_status: 0).destroy_all %>
+					<% @job.job_status = 1 %>
+					<% Job.save %>
+<!-- We now must update @job to reflect the new job status -->
+
+
 				<% end %>
 			<% end %>
 		<% end %>
