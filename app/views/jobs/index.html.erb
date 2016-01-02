@@ -18,8 +18,7 @@
 		<% user= job.user%>
 		<div class="col-sm-3">
 		<h3><%=i%>. <a href="/jobs/<%= job.id %>"><%=job.name%></a></h3>
-		<label>Pay Offer: </label><%= job.pay_offer%><br>
-		<label>by</label> <%= user.fullname%><br>
+		<label>Price: </label><%= job.pay_offer%><br>
 			<% if job.bids.count != 0 %>
 				<label>Bids: </label><%= job.bids.count %>
 			<% else %>
@@ -32,7 +31,13 @@
 			    <i class="glyphicon glyphicon-remove"></i>
 				<% end %>
 			<% else %>
-				<%= link_to 'New Bid', new_job_bid_path(job), class: "btn btn-default" %>
+				<% if job.bids.where(user_id: current_user.id) == 0 %>
+					<%= link_to 'New Bid', new_job_bid_path(job), class: "btn btn-default" %>
+				<% else %>
+					<% job.bids.each do |bid| %>
+						<%= link_to 'Edit Bid', edit_bid_path(bid), class: "btn btn-default" %>
+					<% end %>
+				<% end %>
 			<% end %>
 		</div>
 		<% i = i+1%>
