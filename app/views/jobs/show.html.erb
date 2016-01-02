@@ -30,10 +30,8 @@ Job Status : <% if @job.status == 0 %>
 <br><br>
 	<div>
 		<% if @job.bids.count != 0 %>
-		<% byebug %>
-			<% if @job.bids.where(status: 1) %>
-				<% @job.bids.where(status: 0).destroy_all %>
-				<% @job.status = 1 %>
+			<% if @job.bids.where(bid_status: 1) %>
+				<% @job.job_status = 1 %>
 				<h3>Winning Bid </h3>
 				<% @job.bids.each do |bid| %>
 					<%= bid.user.fullname %>
@@ -47,7 +45,7 @@ Job Status : <% if @job.status == 0 %>
 						<%= bid.bid_value %>
 						<% if @job.user_id == current_user.id %>
 							<%= form_for bid do |f| %>
-								<%= f.hidden_field :status, value: 1 %>
+								<%= f.hidden_field :bid_status, value: 1 %>
 								<%= f.submit "Accept bid" %>
 							<% end %>
 						<% end %>

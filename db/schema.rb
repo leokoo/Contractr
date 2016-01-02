@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160102120141) do
     t.integer  "job_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "status",     default: 0, null: false
+    t.integer  "bid_status", default: 0, null: false
   end
 
   add_index "bids", ["job_id"], name: "index_bids_on_job_id", using: :btree
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160102120141) do
     t.integer  "user_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "status",     default: 0, null: false
+    t.integer  "job_status", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
