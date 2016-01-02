@@ -11,6 +11,15 @@ Job Status :
 </div>
 <!-- This part on top works! It works to show the status of the job -->
 
+		<% if @job.bids.count != 0 %>
+			<% @job.bids.each do |bid|  %>
+				<% if bid.bid_status == 1 %>
+					<% bid.job.bids.where(bid_status: 0).destroy_all %>
+				<% end %>
+			<% end %>
+		<% end %>
+
+<!-- Attemping to destroy all other bids for the same job, if there's one bid with the bid status of 1 -->
 
 <div class="col-sm-3">
 	<% if current_user.id != @job.user.id %>
@@ -56,7 +65,7 @@ Job Status :
 							<% end %>
 						<% end %>
 	<!-- The top part let's us accept the bid if we're the job owner -->
-	
+
 					
 
 					</div>
