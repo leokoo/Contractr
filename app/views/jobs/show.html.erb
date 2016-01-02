@@ -30,7 +30,7 @@ Job Owner : <%= @job.user.fullname %> <br><br>
 					<%= bid.user.fullname %>
 					<%= bid.bid_value %>
 					<% if @job.user_id == current_user.id %>
-						Accept this bid
+						<button class="btn btn-default">Accept this bid</button>
 					<% end %>
 				</div>
 			<% end %>
