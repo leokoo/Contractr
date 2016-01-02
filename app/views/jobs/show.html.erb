@@ -36,7 +36,7 @@ Job Status : <% if @job.status == 0 %>
 					<%= bid.user.fullname %>
 					<%= bid.bid_value %>
 					<% if @job.user_id == current_user.id %>
-						<%= form_for bid do |f| %>
+						<%= form_for @job do |f| %>
 							<% f.number_field :status, :value => 1 %>
 							<%= f.submit "Accept bid" %>
 						<% end %>
