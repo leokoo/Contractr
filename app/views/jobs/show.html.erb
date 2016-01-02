@@ -26,12 +26,19 @@ Job Status :
 			<% end %>
 		<% end %>
 
-<!-- Attemping to destroy all other bids for the same job, if there's one bid with the bid status of 1 -->
 
 <div class="col-sm-3">
 	<% if current_user.id != @job.user.id %>
 		<% if @job.bids.where(user_id: current_user.id).count == 0 %>
-			<%= link_to 'New Bid', new_job_bid_path(@job), class: "btn btn-default" %>
+			<% if @winner == true %>
+			<% else %>
+				<%= link_to 'New Bid', new_job_bid_path(@job), class: "btn btn-default" %>
+			<% end %>
+
+
+
+	<!-- Attempting	to prevent new bids to be lodged when there is a winner -->
+
 		<% elsif @job.bids.where(user_id: current_user.id).count != 0  %>
 			<% @job.bids.each do |bid| %>
 				<% if bid.user_id == current_user.id %>
