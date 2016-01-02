@@ -9,6 +9,13 @@
 		<%= f.label :pay_offer%>
 		<%= f.text_field :pay_offer%>
 		</div>
+		<h3>Tasks</h3>
+		<div class="tasks">
+    	<%= f.fields_for :tasks, @job.tasks.new do |ff|%>
+      		<%= render 'task_fields', f: ff%>
+    	<%end%>
+    	<%= link_to_add_association 'add task', f, :tasks%>
+    	</div>
 		<div>
 		<%= f.submit :'Create Job', class: "btn btn-default" %>
 		</div>
