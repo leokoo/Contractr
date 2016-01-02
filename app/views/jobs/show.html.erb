@@ -37,11 +37,20 @@ Job Status : <% if @job.status == 0 %>
 					<%= bid.bid_value %>
 					<% if @job.user_id == current_user.id %>
 						<%= form_for @job do |f| %>
-							<% f.number_field :status, :value => 1 %>
+							<%= f.hidden_field :status, value: 1 %>
 							<%= f.submit "Accept bid" %>
 						<% end %>
 						<!--
-						<button class="btn btn-default">Accept this bid</button>
+						<script>
+						$.ajax({
+							  method: "POST",
+							  url: "some.php",
+							  data: { name: "John", location: "Boston" }
+							})
+							  .done(function( msg ) {
+							    alert( "Data Saved: " + msg );
+							  });
+						</script>
 						-->
 					<% end %>
 				</div>
