@@ -8,8 +8,9 @@ Rails.application.routes.draw do
                                 :registrations => 'registrations'
                               }
 resources :jobs do
-    resources :bids, shallow: true
-  end
+  puts :update_status  
+  resources :bids, shallow: true
+end
 
 resources :users, only: [:show]
 
