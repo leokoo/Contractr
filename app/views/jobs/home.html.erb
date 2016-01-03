@@ -1,5 +1,5 @@
 <% if @displayed_jobs.any? %>
-	<%= render "shared/carousel" %>
+	<%= render "shared/carousel", projects: @displayed_jobs %>
 	<div class="container">
 		<br><br><br>
 		<h3 class="job-subtitle">Our Job</h3>

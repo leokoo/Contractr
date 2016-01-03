@@ -26,6 +26,8 @@ gem 'linkedin'
 
 # Font Awesome
 gem "font-awesome-rails"
+# Annotate Models
+gem 'annotate', github: 'ctran/annotate_models'
 # Simple Form
 gem 'simple_form'
 # Wysiwyg Bootstrap

@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: 0b054562b8e5564d8de04f3398053e06daa6d426
+  specs:
+    annotate (2.7.0)
+      activerecord (>= 3.2, < 6.0)
+      rake (~> 10.4)
+
+GIT
   remote: git://github.com/nerian/bootstrap-wysihtml5-rails.git
   revision: a4b413aa1c9d5f614a33c3c1f5731ed8bc6302de
   specs:
@@ -241,6 +249,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.3.6)
