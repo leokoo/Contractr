@@ -17,3 +17,4 @@
 //= require_tree .
 //= require chat
 //= require bootstrap-sprockets
+//= require private_pub

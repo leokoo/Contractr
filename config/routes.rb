@@ -12,6 +12,21 @@ resources :jobs do
   resources :bids, shallow: true
 end
 
+
+authenticated :user do
+  root 'users#show'
+end
+
+unauthenticated :user do
+  devise_scope :user do
+    get "/" => "devise/sessions#new"
+  end
+end
+
+resources :conversations do
+    resources :messages
+end
+
 resources :users, only: [:show]
 
 
