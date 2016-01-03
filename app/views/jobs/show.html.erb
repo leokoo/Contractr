@@ -41,8 +41,10 @@ Job Status :
 
 		<% elsif @job.bids.where(user_id: current_user.id).count != 0  %>
 			<% @job.bids.each do |bid| %>
-				<% if bid.user_id == current_user.id %>
+				<% if bid.user_id == current_user.id && bid.bid_status == 0 %>
 					<%= link_to 'Edit Your Bid', edit_bid_path(bid), class: "btn btn-default" %>
+				<% elsif bid.user_id == current_user.id && bid.bid_status == 1 %>
+					<button class="btn btn-default">Talk to your customer</button>
 				<% end %>
 			<% end %>
 		<% end %>
