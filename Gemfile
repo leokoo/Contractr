@@ -24,6 +24,10 @@ gem 'figaro'
 gem 'toastr-rails'
 gem 'linkedin'
 
+#private_pub
+gem 'private_pub'
+gem 'thin'
+
 #elasticsearch
 gem 'searchkick'
 

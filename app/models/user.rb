@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :identities
   has_many :bids
   has_many :jobs
+  has_many :conversations, :foreign_key => :sender_id
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
          

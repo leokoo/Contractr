@@ -15,4 +15,5 @@
 //= require toastr
 //= require turbolinks
 //= require_tree .
+//= require chat
 //= require bootstrap-sprockets
