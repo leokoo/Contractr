@@ -23,6 +23,7 @@ gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'toastr-rails'
 gem 'linkedin'
+gem 'simple_form'
 
 #elasticsearch
 gem 'searchkick'
