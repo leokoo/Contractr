@@ -13,15 +13,15 @@ resources :jobs do
 end
 
 
-authenticated :user do
-  root 'users#show'
-end
+# authenticated :user do
+#   get 'users#show'
+# end
 
-unauthenticated :user do
-  devise_scope :user do
-    get "/" => "devise/sessions#new"
-  end
-end
+# unauthenticated :user do
+#   devise_scope :user do
+#     get "/" => "devise/sessions#new"
+#   end
+# end
 
 resources :conversations do
     resources :messages
