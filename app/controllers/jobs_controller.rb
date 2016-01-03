@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   def new
     @job = Job.new
+    @job_skills = JobSkill.all
     # @skills = Job.first.skill_list
   end
 
@@ -44,8 +45,7 @@ class JobsController < ApplicationController
   end
 
   private
-
   def job_params
-    params.require(:job).permit(:name, :pay_offer, :skill1, :skill2, :skill3, :skill4, :skill5)
+    params.require(:job).permit(:name, :pay_offer)
   end
 end

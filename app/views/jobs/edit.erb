@@ -2,31 +2,14 @@
 <div>
 	<%= form_for(@job) do |f| %>
 		<div>
-		<%= f.label :name%>
+		<%= f.label :name %>
 		<%= f.text_field :name%>
 		</div>
 		<div>
-		<%= f.label :pay_offer%>
+		<%= f.label :pay_offer %>
 		<%= f.text_field :pay_offer%>
 		</div>
-		<div>
-			<%= f.label :tag_list%>
-			<%= f.text_field :tag_list %>
-		</div>
-
-		<div>
-			<%= f.label :skill_list%>
-			<%= f.text_field :skill_list %>
-		</div>
-		<div>
-			<%= f.label :skillone_list%>
-			<%= f.text_field :skillone_list %>
-		</div>
-		<div>
-			<%= f.label :interest_list%>
-			<%= f.text_field :interest_list %>
-		</div>
-		<div>
+		
 		<%= f.submit :'Update Job', class: "btn btn-default" %>
 		</div>
 	<% end %>

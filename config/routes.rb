@@ -7,7 +7,9 @@ Rails.application.routes.draw do
                                 :registrations => 'registrations'
                               }
 
-  resources :jobs
+  resources :jobs do
+    resources :job_skills
+  end
 
   resources :users, only: [:show] do
     resources :skills do
