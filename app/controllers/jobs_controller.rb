@@ -2,6 +2,7 @@ class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
   def new
   	@job = Job.new
+    @job.tasks.new
   end
 
   def create
@@ -9,7 +10,7 @@ class JobsController < ApplicationController
 
   	if @job.save
   		Job.reindex
-  		redirect_to jobs_path
+  		redirect_to @job
   	end
   end
 
@@ -17,6 +18,8 @@ class JobsController < ApplicationController
   end
 
   def show
+    @job = Job.find(params[:id])
+    @tasks = @job.tasks
   end
 
   def update
@@ -44,6 +47,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-  	params.require(:job).permit(:name, :pay_offer, :status, tasks_attributes: [:id, :name, :done, :_destroy])
+  	params.require(:job).permit(:name, :pay_offer, :status, tasks_attributes: [:id, :name, :status, :_destroy])
   end
 end

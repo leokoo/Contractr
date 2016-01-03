@@ -11,7 +11,7 @@
 		</div>
 		<h3>Tasks</h3>
 		<div class="tasks">
-    	<%= f.fields_for :tasks, @job.tasks.new do |ff|%>
+    	<%= f.fields_for :tasks do |ff|%>
       		<%= render 'task_fields', f: ff%>
     	<%end%>
     	<%= link_to_add_association 'add task', f, :tasks%>

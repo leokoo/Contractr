@@ -1,5 +1,14 @@
 <div>
 <h3><%= @job.name %></h3><br>
+
+<div><h5>Tasks</h5>
+<% if @tasks.any?%>
+	<%@tasks.each do |task|%>
+		<%=task.name%> <%"Not complete" if task.status == false%><br>
+	<%end%>
+<% else%>
+	No Task for this job.
+<%end%></div>
 Job pay : <%= @job.pay_offer %><br>
 by
 Job Owner : <%= @job.user.fullname %> <br>
