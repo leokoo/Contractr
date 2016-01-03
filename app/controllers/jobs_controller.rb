@@ -31,6 +31,11 @@ class JobsController < ApplicationController
   	@jobs = Job.search(query).to_a.flatten.uniq
   end
 
+  def home
+    @jobs = Job.all
+    @displayed_jobs = Job.take(4)
+  end
+
   def destroy
   	@job.destroy
     Job.reindex

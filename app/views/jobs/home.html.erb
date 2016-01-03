@@ -1,1 +1,16 @@
-<%= render "shared/carousel" %>
+<% if @displayed_jobs.any? %>
+	<%= render "shared/carousel" %>
+	<div class="container">
+		<br><br><br>
+		<h3 class="job-subtitle">Our Job</h3>
+		<div class="row">
+			<%= render @jobs %>
+		</div>
+	</div>
+<% else %>
+	<div class="container text-center">
+		<br><br><br>
+		<h2>Create your first project</h2>
+		<%= link_to "Start project!", "#", class: "btn btn-success btn-lg" %>
+	</div>
+<% end %>
