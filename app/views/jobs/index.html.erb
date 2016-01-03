@@ -30,13 +30,17 @@
 
 
 
-			<% if current_user.id == user.id %>
+			<% if current_user.id == user.id && job.job_status == 0 %>
 				<%= link_to "Edit the job you posted", edit_job_path(job), class: "btn btn-default" %>
 				<%= link_to job_path(job), method: :delete, class: "btn btn-default" do %>
 			    <i class="glyphicon glyphicon-remove"></i>
 				<% end %>
 			<!-- You edit the job if you're the person who posted it -->
 
+
+
+			<% elsif current_user.id == user.id && job.job_status == 1 %>
+				<button class="btn btn-default">Talk to your developer</button>
 
 
 			<% else %>
@@ -54,7 +58,7 @@
 					<% job.bids.each do |bid| %>
 						<% if bid.user_id == current_user.id %>
 							<% if job.job_status == 1 %>
-								<button class="btn btn-default">Bidding is closed</button>
+								<button class="btn btn-default">Contact your customer</button>
 							<% else %>
 								<%= link_to 'Adjust your bid', edit_bid_path(bid), class: "btn btn-default" %>
 							<% end %>
