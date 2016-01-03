@@ -1,0 +1,37 @@
+
+<%= form_tag jobs_path, :method => 'get',class: "navbar-form" do%>
+	<div class="input-group">
+		<%=text_field_tag :q, nil, placeholder: "Search Jobs", class: 'form-control'%>
+		<span class="input-group-btn">
+			<%= button_tag(type: 'submit', class: 'btn btn-default') do %>
+  			<span
+    			class="glyphicon glyphicon-search">
+  			</span>
+  			<%end%>
+  		</span>
+	</div>  
+<%end%>
+
+<%if @jobs.any?%>
+	<% i = 1%>
+	<%@jobs.each do |job|%>
+		<% user= job.user%>
+		<div class="col-sm-6">
+			<h3><%=i%>. <%=job.name%></h3>
+			<label>Pay Offer: </label><%= job.pay_offer%><br>
+			<label>by</label> <%= user.fullname%><br>
+			<label><%=job.skill1_list%></label><br>
+			<label><%=job.skill2_list%></label><br>
+			<label><%=job.skill3_list%></label><br>
+			<label><%=job.skill4_list%></label><br>
+			<label><%=job.skill5_list%></label><br>
+			<%= link_to "Edit", edit_job_path(job), class: "btn btn-default"%>
+			<%= link_to job_path(job), method: :delete, class: "btn btn-default" do %>
+			    <i class="glyphicon glyphicon-remove"></i>
+			<% end %>
+		</div>
+		<% i = i+1%>
+	<%end%>
+<%else%>
+	<label>No jobs yet</label>
+<%end%>

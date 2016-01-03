@@ -20,3 +20,19 @@
 		</div>
 	</div>
 </div>
+
+Jobs: <% @user.jobs.each do |job| %>
+	<%= job.name %>, 
+	<%end%><br>
+Skills:	<br><% @user.skills.each do |skill| %>
+	<%= Vote.where("skill_id = #{skill.id}", "up_vote = 1").count %>
+	<%= skill.skill %> 
+	 by 
+	 <%= link_to("Like", user_skill_votes_path(current_user, skill, :up_vote => 1.to_i), :method => :post)%>
+	<%skill.votes.each do |vote|%>
+<% if vote.up_vote == 1 %>
+<%= link_to("Unlike", user_skill_vote_path(current_user, skill, vote), :method => :delete)%>
+<%end%>
+	<%= vote.user.fullname%>, 
+	<% end %><br>
+		<% end %>

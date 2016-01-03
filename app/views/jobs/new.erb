@@ -1,0 +1,53 @@
+<center>
+<div>
+	<%= form_for(@job) do |f| %>
+		<div>
+		<%= f.label :name %>
+		<%= f.text_field :name%>
+		</div>
+		<div>
+		<%= f.label :pay_offer %>
+		<%= f.text_field :pay_offer%>
+		</div>
+
+		<div>
+			<%= f.label :skills %>
+			<%= f.text_field :skills %>
+		</div>
+
+		<div>
+			<%= f.label :tag_list %>
+			<%= f.text_field :tag_list %>
+		</div>
+
+		<div>
+			<%= f.label :skillone %>
+			<%= f.text_field :skillone %>
+		</div>
+
+		<div>
+			<%= f.label :skill_2 %>
+			<%= f.text_field :skill_2 %>
+		</div>
+
+		<div>
+			<%= f.label :skill_3 %>
+			<%= f.text_field :skill_3 %>
+		</div>
+
+		<div>
+			<%= f.label :skill_4 %>
+			<%= f.text_field :skill_4 %>
+		</div>
+
+		<div>
+			<%= f.label :skill_5 %>
+			<%= f.text_field :skill_5 %>
+		</div>
+
+		<div>
+		<%= f.submit :'Create Job', class: "btn btn-default" %>
+		</div>
+	<% end %>
+</div>
+</center>
