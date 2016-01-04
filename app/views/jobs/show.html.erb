@@ -1,7 +1,7 @@
 <div>
 <h3><%= @job.name %></h3><br>
 Job Pay : <%= @job.pay_offer %><br>
-Job Owner : <%= @job.user.fullname %> <br>
+Job Owner : <%= link_to @job.user.fullname, user_path(@user) %> <br>
 Job Status :
 	<% if @job.job_status == 0 %>
 		Open for bidding

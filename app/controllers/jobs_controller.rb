@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
+  
   def new
   	@job = Job.new
   end
@@ -17,6 +18,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @user = @job.user
   end
 
   def update

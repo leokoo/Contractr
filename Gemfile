@@ -26,6 +26,8 @@ gem 'linkedin'
 
 # Gems User Page 
 gem 'simple_form'
+gem 'carrierwave'
+gem 'cloudinary'
 
 #elasticsearch
 gem 'searchkick'

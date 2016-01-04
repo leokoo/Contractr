@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+
+  attr_accessor :avatar
+
+  mount_uploader :avatar, AvatarUploader
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :identities
@@ -9,6 +14,8 @@ class User < ActiveRecord::Base
          
   validates :fullname, presence: true, length: {maximum: 50}
   # validates :email, uniqueness: true, allow_nil: true
+
+
 
   def self.from_omniauth(auth)
   	user = User.where(email: auth.info.email).first
