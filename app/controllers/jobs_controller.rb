@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
+  after_action :reindex, only: [:create, :update, :destroy]
   def new
   	@job = Job.new
     @job.tasks.new
@@ -9,7 +10,6 @@ class JobsController < ApplicationController
   	@job = current_user.jobs.new(job_params)
 
   	if @job.save
-  		Job.reindex
   		redirect_to @job
   	end
   end
@@ -24,7 +24,6 @@ class JobsController < ApplicationController
 
   def update
   	@job.update(job_params)
-    Job.reindex
 
     redirect_to jobs_path
   end
@@ -36,7 +35,6 @@ class JobsController < ApplicationController
 
   def destroy
   	@job.destroy
-    Job.reindex
 
     redirect_to jobs_path
   end
@@ -44,6 +42,10 @@ class JobsController < ApplicationController
   private
   def set_jobs
     @job = Job.find(params[:id])
+  end
+
+  def reindex
+    Job.reindex
   end
 
   def job_params
