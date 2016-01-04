@@ -31,3 +31,66 @@
 
 
 
+<!-- start:main -->
+	<div class="container" id="main">
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+				<div id="sidebar">
+					<div class="sosmed">
+						<div class="text-center">
+							<a href="#"><i class="fa fa-facebook fa-2x" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter fa-2x" data-toggle="tooltip" data-placement="top" title="Twitter"></i></a>
+							<a href="#"><i class="fa fa-google-plus fa-2x" data-toggle="tooltip" data-placement="top" title="Google Plus"></i></a>
+						</div>
+					</div>
+					<div class="user">
+						<div class="text-center">
+							<img src="img/user/user.jpg" class="img-circle">
+						</div>
+						<div class="user-head">
+							<h1>JONATHAN DOE</h1>
+							<div class="hr-center"></div>
+							<h5>Web <br>Developer</h5>
+						</div>
+					</div>
+					<div class="link-me">
+						<div class="text-center">
+							<a href="#"><i class="fa fa-download fa-2x" data-toggle="tooltip" data-placement="top" title="Download My CV"></i></a>
+							<a href="#"><i class="fa fa-flag fa-2x" data-toggle="tooltip" data-placement="top" title="Get in Touch"></i></a>
+							<a href="#"><i class="fa fa-money fa-2x" data-toggle="tooltip" data-placement="top" title="Hire Me"></i></a>
+						</div>
+						<div class="hr-center"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+				<div id="content">
+					
+
+					<%= render partial: 'navbar' %>
+
+					<!-- start:main content -->
+					<div class="main-content">
+						<ul class="timeline">
+							
+							<%= render partial: 'profile' %>
+
+					      <%= render partial: 'work' %>
+
+					      <%= render partial: 'resume' %>
+
+					      <%= render partial: 'blog' %>
+
+					      <%= render partial: 'contact' %>
+					   </ul>
+					</div>
+					<!-- end:main content -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end:main -->
+
+	<%= render partial: 'footer' %>
+
+

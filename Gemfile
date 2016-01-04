@@ -28,6 +28,7 @@ gem 'linkedin'
 gem 'simple_form'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'font-awesome-sass', '~> 4.4.0'
 
 #elasticsearch
 gem 'searchkick'
