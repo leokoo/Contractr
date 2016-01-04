@@ -2,6 +2,7 @@ class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
   after_action :reindex, only: [:create, :update, :destroy]
   def new
+    @new = true
   	@job = Job.new
     @job.tasks.new
   end
@@ -15,6 +16,9 @@ class JobsController < ApplicationController
   end
 
   def edit
+    @new = false
+    @job = Job.find(params[:id])
+    @bid = @job.bids.first
   end
 
   def show

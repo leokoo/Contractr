@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 resources :jobs do
   puts :update_status  
   resources :bids, shallow: true
-  resources :tasks, only: [:edit,:update] 
 end
 
 resources :users, only: [:show]
