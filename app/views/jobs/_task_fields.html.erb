@@ -1,4 +1,4 @@
-<%if current_user.id == @job.user_id%>	
+<%if current_user.id == @job.user_id || @job.id == nil%>	
 	<div class="nested-fields">
 		<div class="field">
 			<%= f.label :name%>
@@ -6,12 +6,14 @@
 		</div>
 		<%= link_to_remove_association "remove task", f%>
 	</div>
+
+
 <%end%>
-<%if @job.status == 1%>
+<%if @job.job_status == 1%>
 	<%if current_user.id == @bid.user_id%>
 		<div class="nested-fields">
 			<div class="field">
-			    <%= f.check_box :status%>
+			    <%= f.check_box :task_status%>
 			    <%= f.label :done%>
 			</div>
 		</div>

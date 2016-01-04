@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160103074618) do
+ActiveRecord::Schema.define(version: 20160104082455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20160103074618) do
     t.integer  "bid_value"
     t.integer  "user_id"
     t.integer  "job_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "bid_status", default: 0, null: false
   end
 
   add_index "bids", ["job_id"], name: "index_bids_on_job_id", using: :btree
@@ -43,15 +44,13 @@ ActiveRecord::Schema.define(version: 20160103074618) do
     t.integer  "user_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "status",     default: 0, null: false
+    t.integer  "job_status", default: 0, null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "status",     default: false
-    t.integer  "job_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string  "name"
+    t.boolean "task_status", default: false
+    t.integer "job_id"
   end
 
   create_table "users", force: :cascade do |t|

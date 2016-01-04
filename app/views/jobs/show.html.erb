@@ -6,7 +6,7 @@
 	<% if @tasks.any?%>
 		<%@tasks.each do |task|%>
 			<%=task.name%>
-			<% if task.status == false%>
+			<% if task.task_status == false%>
 				Not complete<br>
 			<% else%>
 				Complete<br>
@@ -18,57 +18,106 @@
 </div>
 
 Job pay : <%= @job.pay_offer %><br>
-by
 Job Owner : <%= @job.user.fullname %> <br>
-Job Status : <% if @job.status == 0 %>
-	Open for bidding
-<% elsif @job.status == 1 %>
-	Bidding closed	
-<% end %>
+Job Status :
+	<% if @job.job_status == 0 %>
+		Open for bidding
+	<% elsif @job.job_status == 1 %>
+		Bidding closed	
+	<% end %>
 </div>
-<div class="col-sm-3">
-	<% if current_user.id != @job.user.id %>
-		<% if @job.bids.where(user_id: current_user.id).count == 0 %>
-			<%= link_to 'New Bid', new_job_bid_path(@job), class: "btn btn-default" %>
-		<% elsif @job.bids.where(user_id: current_user.id).count != 0  %>
-			<% @job.bids.each do |bid| %>
-				<% if bid.user_id == current_user.id %>
-					<%= link_to 'Edit Bid', edit_bid_path(bid), class: "btn btn-default" %>
+<!-- This part on top works! It works to show the status of the job -->
+		<% if @job.bids.count != 0 %>
+			<% @job.bids.each do |bid|  %>
+				<% if bid.bid_status == 1 %>
+					<% bid.job.bids.where(bid_status: 0).destroy_all %>
+					<% @job.job_status = 1 %>
+					<% @job.save %>
+					<% @winner = true %>
+				<!-- Job save works! We now update the status of the job when a bid is accepted -->
 				<% end %>
 			<% end %>
 		<% end %>
-	<% elsif current_user.id == @job.user.id %>
+
+<div class="col-sm-3">
+	<% if current_user.id != @job.user.id %>
+		<% if @job.bids.where(user_id: current_user.id).count == 0 %>
+			<% if @winner == true %>
+			<% else %>
+				<%= link_to 'New Bid', new_job_bid_path(@job), class: "btn btn-default" %>
+			<% end %>
+
+
+
+	<!-- To prevent new bids to be lodged when there is a winner -->
+
+		<% elsif @job.bids.where(user_id: current_user.id).count != 0  %>
+			<% @job.bids.each do |bid| %>
+				<% if bid.user_id == current_user.id && bid.bid_status == 0 %>
+					<%= link_to 'Edit Your Bid', edit_bid_path(bid), class: "btn btn-default" %>
+				<% elsif bid.user_id == current_user.id && bid.bid_status == 1 %>
+					<button class="btn btn-default">Talk to your customer</button>
+					<%= link_to "Update Job", edit_job_path, class: "btn btn-default" %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% elsif @winner == true %>
+			<button class="btn btn-default">Talk to your developer</button>
+	<% else %>
 		<%= link_to "Edit", edit_job_path, class: "btn btn-default" %>
 		<%= link_to job_path, method: :delete, class: "btn btn-default" do %>
 	    <i class="glyphicon glyphicon-remove"></i>
 		<% end %>
-	<% elsif @job.status != 0%>
-		<%bid = @job.bids.first%>
-		<%if current_user.id == bid.user_id%>
-			<%= link_to "Edit", edit_job_path, class: "btn btn-default" %>	
-		<%end%>
 	<% end %>
 	<%= link_to "Back", jobs_path, class: "btn btn-default" %>
-<br><br>
+	<br><br>
+<!-- The part on top helps us create a button to bid if we haven't, edit the bid if we have. And edit the job if we own the job instead-->
+
+
+
 	<div>
 		<% if @job.bids.count != 0 %>
-			<label>Current Bids</label><br>
+			<% if @winner == true %>
+				<label>Winning Bid</label><br>
+			<% else %>
+				<label>Current Bid</label><br>
+			<% end %>
 			<% @job.bids.each do |bid|  %>
 				<div>
+				<% if bid.user.id == current_user.id %>
+					Your Bid
+				<% else %>
 					<%= bid.user.fullname %>
-					<%= bid.bid_value %>
+				<% end %>
+				<%= bid.bid_value %>
+<!-- We show the bid details for current bids, if there's any. If there are no bids, this will not show -->
 					<% if @job.user_id == current_user.id %>
-						<% if @job.status != 1%>
-							<%= form_for @job do |f| %>
-								<%= f.hidden_field :status, value: 1 %>
+						<%= form_for bid do |f| %>
+							<%= f.hidden_field :bid_status, value: 1 %>
+							<% if @winner == true %>
+							<% else %>
 								<%= f.submit "Accept bid" %>
 							<% end %>
-						<%end%>
+						<% end %>
 					<% end %>
+<!-- The top part let's us accept the bid if we're the job owner -->
 				</div>
-			<% end %>
+			<% end %>			
 		<% else %>
 		 No Bids Yet
 		<% end %>
 	</div>
 </div>
+
+<!--
+<script>
+$.ajax({
+	  method: "POST",
+	  url: "some.php",
+	  data: { name: "John", location: "Boston" }
+	})
+	  .done(function( msg ) {
+	    alert( "Data Saved: " + msg );
+	  });
+</script>
+-->
