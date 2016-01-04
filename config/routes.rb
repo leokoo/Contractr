@@ -8,7 +8,6 @@ Rails.application.routes.draw do
                                 :registrations => 'registrations'
                               }
 resources :jobs do
-  puts :update_status  
   resources :bids, shallow: true
 end
 
