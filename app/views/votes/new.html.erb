@@ -1,0 +1,17 @@
+<div>
+	<%= form_for [@user, @skill, @vote] do |f| %>
+		<div>
+			<%= f.label :up_vote %>
+			<%= f.text_field :up_vote %>
+		</div>
+
+		<div>
+			<%= f.label :down_vote %>
+			<%= f.text_field :down_vote %>
+		</div>
+
+		<div>
+		<%= f.submit :'Submit Vote', class: "btn btn-default" %>
+		</div>
+	<% end %>
+</div>

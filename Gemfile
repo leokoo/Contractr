@@ -22,8 +22,8 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'toastr-rails'
+gem 'acts-as-taggable-on'
 gem 'linkedin'
-
 #elasticsearch
 gem 'searchkick'
 

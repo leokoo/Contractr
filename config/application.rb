@@ -24,3 +24,12 @@ module AirAlien
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+
+  # class MyParser < ActsAsTaggableOn::GenericParser
+  #   def parse
+  #     ActsAsTaggableOn::TagList.new.tap do |tag_list|
+  #       tag_list.add @tag_list.split(' ')  #blank space as in your case
+  #     end
+  #   end
+  # end
