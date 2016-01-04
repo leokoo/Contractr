@@ -1,18 +1,12 @@
 class JobsController < ApplicationController
+  before_action :set_jobs, only: [:show, :edit, :update, :destroy]
   def new
     @job = Job.new
     @job_skills = JobSkill.all
-    # @skills = Job.first.skill_list
   end
 
   def create
     @job = current_user.jobs.new(job_params)
-    # @skills = Job.first.skill_list
-      # if @job.skill_list == ["1"]
-      #   @job.skill_list = @skills
-      # else
-      #   @job.skill_list == nil
-      # end
 
     job_skill = []
     if !params[:required_skills].nil?
@@ -29,12 +23,13 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find(params[:id])
+  end
+
+  def show
   end
 
   def update
-    @job = Job.find(params[:id])
-    @job.update(job_params)
+  	@job.update(job_params)
     Job.reindex
 
     redirect_to jobs_path
@@ -54,7 +49,11 @@ class JobsController < ApplicationController
   end
 
   private
+  def set_jobs
+    @job = Job.find(params[:id])
+  end
+
   def job_params
-    params.require(:job).permit(:name, :pay_offer)
+  	params.require(:job).permit(:name, :pay_offer, :job_status)
   end
 end

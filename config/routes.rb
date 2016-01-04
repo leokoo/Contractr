@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'pages#home'
   devise_for  :users, 
               :path => '', 
@@ -6,8 +7,12 @@ Rails.application.routes.draw do
               :controllers => {:omniauth_callbacks => 'omniauth_callbacks',
                                 :registrations => 'registrations'
                               }
+  resources :jobs do
+    puts :update_status  
+    resources :bids, shallow: true
+  end
 
-  resources :jobs
+  resources :users, only: [:show]
 
   resources :job_skills
 

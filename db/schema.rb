@@ -16,6 +16,18 @@ ActiveRecord::Schema.define(version: 20160104024622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bids", force: :cascade do |t|
+    t.integer  "bid_value"
+    t.integer  "user_id"
+    t.integer  "job_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "bid_status", default: 0, null: false
+  end
+
+  add_index "bids", ["job_id"], name: "index_bids_on_job_id", using: :btree
+  add_index "bids", ["user_id"], name: "index_bids_on_user_id", using: :btree
+
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -39,10 +51,11 @@ ActiveRecord::Schema.define(version: 20160104024622) do
     t.string   "name"
     t.string   "pay_offer"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "skill_needed"
     t.string   "required_skills"
+    t.integer  "job_status",      default: 0, null: false
   end
 
   create_table "skills", force: :cascade do |t|
@@ -115,6 +128,8 @@ ActiveRecord::Schema.define(version: 20160104024622) do
   add_index "votes", ["skill_id"], name: "index_votes_on_skill_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
+  add_foreign_key "bids", "jobs"
+  add_foreign_key "bids", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "job_skills", "jobs"
   add_foreign_key "skills", "users"
