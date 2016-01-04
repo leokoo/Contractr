@@ -1,6 +1,5 @@
 class JobSkillsController < ApplicationController
 	def new
-		@job = Job.find(params[:job_id])
 		@job_skill = JobSkill.new
 	end
 

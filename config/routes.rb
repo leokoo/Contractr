@@ -7,9 +7,9 @@ Rails.application.routes.draw do
                                 :registrations => 'registrations'
                               }
 
-  resources :jobs do
-    resources :job_skills
-  end
+  resources :jobs
+
+  resources :job_skills
 
   resources :users, only: [:show] do
     resources :skills do
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :skills
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

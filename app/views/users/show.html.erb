@@ -20,10 +20,10 @@
 		</div>
 	</div>
 </div>
-
-Jobs: <% @user.jobs.each do |job| %>
+	Jobs: <% @user.jobs.each do |job| %>
 	<%= job.name %>, 
 	<%end%><br>
+
 Skills:	<br><% @user.skills.each do |skill| %>
 	Like Count: <%= Vote.where("skill_id = #{skill.id}", "up_vote = 1").count %>
 	<%= skill.skill %> 

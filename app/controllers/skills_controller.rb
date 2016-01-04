@@ -6,7 +6,7 @@ class SkillsController < ApplicationController
   end
 
   def create
-  	@skill = current_user.skills.new(skill_params)
+  	@skill = Skill.new(skill_params)
   	if @skill.save
 
   		redirect_to user_path(current_user.id), notice: "Skill Added"

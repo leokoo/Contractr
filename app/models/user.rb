@@ -8,11 +8,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
          
   validates :fullname, presence: true, length: {maximum: 50}
+  validates_uniqueness_of :user_skills
   # validates :email, uniqueness: true, allow_nil: true
 
   has_many :jobs
   has_many :skills
   has_many :votes
+  serialize :user_skills
 
   def self.from_omniauth(auth)
   	user = User.where(email: auth.info.email).first
@@ -29,6 +31,11 @@ class User < ActiveRecord::Base
         user.password = Devise.friendly_token[0,20]
       end
     end
+  end
+
+  def has_skill?(skill)
+    return false if user_skills.nil?
+    user_skills.include?(skill) 
   end
 
 end

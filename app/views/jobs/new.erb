@@ -11,7 +11,9 @@
 		</div>
 
 		<% @job_skills.all.each do |jobskill| %>
-			<%= jobskill.skill %><br>
+		<%= check_box_tag "required_skills[#{jobskill.skill}]" %><%= jobskill.skill %><br>
+		
+			
 		<% end %>
 
 		<div>

@@ -13,7 +13,16 @@ class JobsController < ApplicationController
       # else
       #   @job.skill_list == nil
       # end
+
+    job_skill = []
+    if !params[:required_skills].nil?
+      params[:required_skills].each_key do |key|
+        job_skill << key
+      end
+    end 
+    @job.required_skills = job_skill
     if @job.save
+
       Job.reindex
       redirect_to jobs_path
     end
