@@ -13,8 +13,6 @@
 #
 
 class Job < ActiveRecord::Base
-  before_action :authenticate_user!, except: [:index, :show]
-	
 	belongs_to :user
 	has_many :bids
 

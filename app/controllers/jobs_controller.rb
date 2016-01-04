@@ -14,6 +14,7 @@
 
 class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show, :home]
   def new
   	@job = Job.new
   end

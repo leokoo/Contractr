@@ -2,9 +2,13 @@
 @import "bootstrap";
 @import "toastr";
 @import "font-awesome";
+@import "settings";
 
 // importing sass files
 @import "landing";
+
+// wysiwyg bootstrap
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 
 body {
  	color: #565a5c;
