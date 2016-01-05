@@ -1,10 +1,9 @@
 module ApplicationHelper
 	def avatar_url(user)
-		gravatar_id = Digest::MD5::hexdigest(user.email).downcase
 		if user.image
 			user.image + "?type=large"
 		else
-		"https://www.gravatar.com/avatar.jpg?d=identical&s=150"
+			"https://d3lut3gzcpx87s.cloudfront.net/res/img/UnknownProfile.png"
 		end
 	end
 end
