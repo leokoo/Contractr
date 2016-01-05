@@ -11,10 +11,9 @@
 		<!-- goal -->
 		<div class="col-xs-4 col-sm-12">
 			<div class="val">
-				1000$
+				<%= number_to_currency(@job.pay_offer, unit: "$", precision: 0) %>
 			</div>
-			<div class="lab">
-				goal
+			<div class="lab">pay offer</div>
 			</div>
 		</div>
 

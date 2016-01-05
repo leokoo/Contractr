@@ -26,6 +26,6 @@ class Job < ActiveRecord::Base
 
   private
     def start_job
-      self.expiration_date = 1.month.from_now
+      self.expiration_date = 1.week.from_now
     end
 end
