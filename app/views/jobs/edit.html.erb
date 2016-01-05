@@ -10,6 +10,7 @@
 			<%= f.text_field :pay_offer%>
 		</div>
 		
+		<%= f.label :required_skills %>
 		<% @job_skills.all.each do |jobskill| %>
 			<%= check_box_tag "required_skills[#{jobskill.skill}]", "#{jobskill.skill}]", @job.has_skill?(jobskill.skill) %><%= jobskill.skill %><br>
 		<% end %>
