@@ -11,7 +11,7 @@
 				<% else %>
 					<%= image_tag "https://www.gravatar.com/avatar.jpg?d=identical&s=150", size: "60x60" %>
 				<% end %>
-				<%= vote.user.fullname %>
+				<%= link_to vote.user.fullname, user_path(vote.user) %>
 			</p>
 		<% end %>
 	<% end %>
