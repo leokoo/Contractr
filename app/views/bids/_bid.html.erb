@@ -2,4 +2,5 @@
 	<th scope="row"><%= bid.id %></th>
 	<td><%= link_to bid.job.name, job_path(bid.job) %></td>
 	<td><%= link_to bid.bid_value, job_path(bid.job) %></td>
+	<td><%= link_to "#{bid.delivery_period} days", job_path(bid.job) %></td>
 </tr>
