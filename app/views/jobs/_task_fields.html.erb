@@ -13,7 +13,8 @@
 	<%if current_user.id == @bid.user_id%>
 		<div class="nested-fields">
 			<div class="field">
-			    <%= f.check_box :task_status%>
+				<%= f.text_field :name, readonly: true%>
+			    <%= f.check_box :task_status, value: true%>
 			    <%= f.label :done%>
 			</div>
 		</div>

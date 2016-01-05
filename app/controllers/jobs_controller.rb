@@ -27,7 +27,21 @@ class JobsController < ApplicationController
   end
 
   def update
+    @job = Job.find(params[:id])
   	@job.update(job_params)
+
+    params[:job][:tasks_attributes].each do |x,y|
+      
+      if y[:task_status] == "1"
+        task = Task.find(y[:id])
+        task.update(:task_status => true)
+      else
+        task = Task.find(y[:id])
+        task.update(:task_status => false)
+      end
+    end
+
+    Job.reindex
 
     redirect_to jobs_path
   end
