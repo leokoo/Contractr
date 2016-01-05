@@ -15,6 +15,7 @@
 class Job < ActiveRecord::Base
 	belongs_to :user
 	has_many :bids
+  has_many :rewards
 
   before_validation :start_job, :on => :create
 
