@@ -5,14 +5,15 @@
 			<th>#</th>
 			<th>Job</th>
 			<th>Bid</th>
-			<th>---</th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<% if bids.any? %>
 			<% bids.each do |bid| %>
-				<%= render 'bid', bid: bid %>
+				<% if bid.job_id == @job.id %>
+					<%= render 'bid', bid: bid %>
+				<% end %>
 			<% end %>
 		<% else %>
 			<tr>
