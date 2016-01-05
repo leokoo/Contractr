@@ -2,14 +2,19 @@
 <div>
 	<%= form_for(@job) do |f| %>
 		<div>
-		<%= f.label :name %>
-		<%= f.text_field :name%>
+			<%= f.label :name %>
+			<%= f.text_field :name%>
 		</div>
 		<div>
-		<%= f.label :pay_offer %>
-		<%= f.text_field :pay_offer%>
+			<%= f.label :pay_offer %>
+			<%= f.text_field :pay_offer%>
 		</div>
 		
+		<%= f.label :required_skills %>
+		<% @job_skills.all.each do |jobskill| %>
+			<%= check_box_tag "required_skills[#{jobskill.skill}]", "#{jobskill.skill}]", @job.has_skill?(jobskill.skill) %><%= jobskill.skill %><br>
+		<% end %>
+
 		<%= f.submit :'Update Job', class: "btn btn-default" %>
 		</div>
 	<% end %>
