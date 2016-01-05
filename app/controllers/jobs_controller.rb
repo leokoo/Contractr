@@ -32,6 +32,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @days_to_go = @job.days_to_go
   end
 
   def update

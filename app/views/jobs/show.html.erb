@@ -14,7 +14,7 @@
 					<%= link_to 'Edit', edit_job_path(@job) %>
 					<%= link_to 'Delete', job_path(@job), method: :delete, data: {confirm: "Are you sure?"} %>
 				</div>
-				<%= render 'stats' %>
+				<%= render 'stats', job: @job, days_to_go: @days_to_go %>
 				<%= link_to 'See project backers', "#", class: "btn btn-success btn-lg" %>
 				<%= link_to 'Back this project', "#", class: "btn btn-success btn-lg" %>
 				<p class="project-time">This job will expire in 3 days.</p>
