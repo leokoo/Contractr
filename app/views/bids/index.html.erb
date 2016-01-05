@@ -11,12 +11,18 @@
   </thead>
 
   <tbody>
+    <% i = 1 %>
     <% @bids.each do |bid| %>
       <tr>
-        <td><%= bid.bid_value %></td>
-        <td><%= link_to 'Show', bid %></td>
-        <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
-        <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= i %>) <%= bid.job.name %></td>
+        <td>|  <%= bid.user.fullname %></td>
+        <td>|  <%= bid.bid_value %></td>
+        <td>|  <%= link_to 'Show', bid %></td>
+        <% if bid.user.id == current_user.id && bid.job.job_status == 0 %>
+          <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
+          <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% i += 1 %>
       </tr>
     <% end %>
   </tbody>

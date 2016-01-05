@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   	
   end
 
+  private
 	def set_users
 		@user = User.find(params[:id])
 	end

@@ -1,4 +1,3 @@
-
 <!-- start:main -->
 	<div class="container" id="main">
 		<div class="row">
@@ -44,9 +43,13 @@
 							
 							<%= render partial: 'profile' %>
 
-					      <%= render partial: 'work' %>
+					      <%= render partial: 'jobs2' %>
 
 					      <%= render partial: 'resume' %>
+
+					      <%= render partial: 'skillbar' %>
+
+					      <%= render partial: 'skills' %>
 
 					      <%= render partial: 'blog' %>
 
@@ -61,41 +64,3 @@
 	<!-- end:main -->
 
 	<%= render partial: 'footer' %>
-
-
-
-	<div class="jumbotron" >
-	<div class="container">
-
-		<div>
-			<p><a class="btn btn-primary btn-lg pull-right" href="#" role="button">Contact for job</a></p>
-		</div>
-
-		<div class="row">
-			<div class="col-md-4 pull_left">
-				<%= image_tag avatar_url(@user), class: "avatar" %>
-			</div>
-
-			<div>
-				<h3><%= @user.fullname %></h3>
-					<p>Member Since: <%= @user.created_at.strftime("%b %d, %Y") %> </p>
-					<p>Email: <%= @user.email %> </p>
-					<p>Phone: <%= @user.phone_number %> </p>
-					<p>Twitter: <%= @user.twitter %> </p>
-					<p>Facebook: <%= @user.facebook %> </p>
-					<p>USD/hour: <%= @user.rate %> </p>
-					<p>Languages: <%= @user.languages %> </p>
-			</div>
-
-			<div>
-				<h3>Who am I</h3>
-				<p><%= @user.description %></p>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
-
-

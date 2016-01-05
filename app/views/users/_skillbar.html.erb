@@ -1,48 +1,70 @@
+<li id="id-skills">
+	<div class="timeline-badge default"><i class="fa fa-comments"></i></div>
+	<h1 class="timeline-head">Skills</h1>
+</li>
+
 <li>
-					          	<div class="timeline-badge warning"></div>
-					          	<div class="timeline-panel">
-						          	<h1>Skills</h1>
-						          	<div class="hr-left"></div>
-						          	<div class="skillbar clearfix " data-percent="90%">
-										<div class="skillbar-title" style="background: #16a085;"><span>HTML5</span></div>
-										<div class="skillbar-bar" style="background: #1abc9c;"></div>
-										<div class="skill-bar-percent">90%</div>
-									</div> <!-- End Skill Bar -->
+ 	<div class="timeline-badge warning"></div>
+	 	<div class="timeline-panel">
+	    	<h1>Skills</h1>
+	    	<div class="hr-left"></div>
+	    	<div class="skillbar clearfix " data-percent="90%">
+			<div class="skillbar-title" style="background: #16a085;"><span>HTML5</span></div>
+			<div class="skillbar-bar" style="background: #1abc9c;"></div>
+			<div class="skill-bar-percent">90%</div>
+		</div> <!-- End Skill Bar -->
 
-									<div class="skillbar clearfix " data-percent="85%">
-										<div class="skillbar-title" style="background: #2980b9;"><span>CSS3</span></div>
-										<div class="skillbar-bar" style="background: #3498db;"></div>
-										<div class="skill-bar-percent">85%</div>
-									</div> <!-- End Skill Bar -->
+		<div class="skillbar clearfix " data-percent="85%">
+			<div class="skillbar-title" style="background: #2980b9;"><span>CSS3</span></div>
+			<div class="skillbar-bar" style="background: #3498db;"></div>
+			<div class="skill-bar-percent">85%</div>
+		</div> <!-- End Skill Bar -->
 
-									<div class="skillbar clearfix " data-percent="70%">
-										<div class="skillbar-title" style="background: #2c3e50;"><span>jQuery</span></div>
-										<div class="skillbar-bar" style="background: #2c3e50;"></div>
-										<div class="skill-bar-percent">70%</div>
-									</div> <!-- End Skill Bar -->
+		<div class="skillbar clearfix " data-percent="70%">
+			<div class="skillbar-title" style="background: #2c3e50;"><span>jQuery</span></div>
+			<div class="skillbar-bar" style="background: #2c3e50;"></div>
+			<div class="skill-bar-percent">70%</div>
+		</div> <!-- End Skill Bar -->
 
-									<div class="skillbar clearfix " data-percent="50%">
-										<div class="skillbar-title" style="background: #c0392b;"><span>PHP</span></div>
-										<div class="skillbar-bar" style="background: #e74c3c;"></div>
-										<div class="skill-bar-percent">50%</div>
-									</div> <!-- End Skill Bar -->
+		<div class="skillbar clearfix " data-percent="50%">
+			<div class="skillbar-title" style="background: #c0392b;"><span>PHP</span></div>
+			<div class="skillbar-bar" style="background: #e74c3c;"></div>
+			<div class="skill-bar-percent">50%</div>
+		</div> <!-- End Skill Bar -->
 
-									<div class="skillbar clearfix " data-percent="75%">
-										<div class="skillbar-title" style="background: #2c3e50;"><span>Wordpress</span></div>
-										<div class="skillbar-bar" style="background: #34495e;"></div>
-										<div class="skill-bar-percent">75%</div>
-									</div> <!-- End Skill Bar -->
+		<div class="skillbar clearfix " data-percent="75%">
+			<div class="skillbar-title" style="background: #2c3e50;"><span>Wordpress</span></div>
+			<div class="skillbar-bar" style="background: #34495e;"></div>
+			<div class="skill-bar-percent">75%</div>
+		</div> <!-- End Skill Bar -->
 
-									<div class="skillbar clearfix " data-percent="100%">
-										<div class="skillbar-title" style="background: #27ae60;"><span>SEO</span></div>
-										<div class="skillbar-bar" style="background: #2ecc71;"></div>
-										<div class="skill-bar-percent">100%</div>
-									</div> <!-- End Skill Bar -->
+		<div class="skillbar clearfix " data-percent="100%">
+			<div class="skillbar-title" style="background: #27ae60;"><span>SEO</span></div>
+			<div class="skillbar-bar" style="background: #2ecc71;"></div>
+			<div class="skill-bar-percent">100%</div>
+		</div> <!-- End Skill Bar -->
 
-									<div class="skillbar clearfix " data-percent="70%">
-										<div class="skillbar-title" style="background: #f39c12;"><span>Photoshop</span></div>
-										<div class="skillbar-bar" style="background: #f1c40f;"></div>
-										<div class="skill-bar-percent">70%</div>
-									</div> <!-- End Skill Bar -->
-					          	</div>
-					        </li>
+		<div class="skillbar clearfix " data-percent="70%">
+			<div class="skillbar-title" style="background: #f39c12;"><span>Photoshop</span></div>
+			<div class="skillbar-bar" style="background: #f1c40f;"></div>
+			<div class="skill-bar-percent">70%</div>
+		</div> <!-- End Skill Bar -->
+
+			<div class="work-experience">
+		    	<% @user.skills.each do |skill| %>
+					<%= skill.skill %> 
+						<% unless skill.user_id == current_user.id %>
+							<% unless current_user.votes.exists?(skill.votes) %>
+								<%= link_to("Like", user_skill_votes_path(current_user, skill, :up_vote => 1.to_i), :method => :post) %>
+							<% end %>
+							<% skill.votes.each do |vote|%>
+								<% if vote.user_id == current_user.id %>
+									<%= link_to("Unlike", user_skill_vote_path(current_user, skill, vote), :method => :delete) %>
+							<% end %>	
+						<% end %>
+					<% end %>
+					| <%= link_to Vote.where("skill_id = #{skill.id}", "up_vote = 1").count, user_skill_path(@user, skill) %><br>
+				<% end %>
+			</div>
+ 	</div>
+</li>

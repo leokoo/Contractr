@@ -1,9 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Job Title:</strong>
+  <%= @bid.job.name %> <br>
+  <strong>Job Poster:</strong>
+  <%= @bid.job.user.fullname %> <br>
   <strong>Bid value:</strong>
-  <%= @bid.bid_value %>
+  <%= @bid.bid_value %> <br>
+  <strong>Bidder: </strong>
+  <%= @bid.user.fullname %>
 </p>
 
-<%= link_to 'Edit', edit_bid_path(@bid) %> |
+<% if @bid.user.id == current_user.id && @bid.bid_status == 0 %>
+	<%= link_to 'Edit', edit_bid_path(@bid) %> |
+<% end %>
 <%= link_to 'Back', job_path(@bid.job_id) %>

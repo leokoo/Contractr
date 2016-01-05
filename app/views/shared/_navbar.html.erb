@@ -12,10 +12,10 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-      	<% if(!user_signed_in?) %>
-      		<li><%= link_to "Log In", new_user_session_path %></li>
-      		<li><%= link_to "Sign Up", new_user_registration_path %></li>
-      	<% else %>
+        <% if(!user_signed_in?) %>
+          <li><%= link_to "Log In", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <% else %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
@@ -29,11 +29,12 @@
               <li><%= link_to "Profile", user_path(current_user.id) %></li>
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
               <li role="separator" class="divider"></li>
+              <li><%= link_to "User Profile", user_path(current_user.id) %></li>
               <li><a href="#">Account Settings</a></li>
-          		<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
-      	<% end %>
+        <% end %>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

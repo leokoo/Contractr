@@ -21,6 +21,11 @@
                 <%= f.text_field :fullname, autofocus: true, :placeholder => "Full Name", :class => "form-control" %>
               </div>
 
+              Skill List
+              <% @skills.first(5).each do |userskill| %>
+                  <%= check_box_tag "user_skills[#{userskill.skill}]", "#{userskill.skill}", current_user.has_skill?(userskill.skill) %><%= userskill.skill %><br>
+              <%end%>
+
               <div class="form-group">
                 <%= f.text_field :phone_number, autofocus: true, :placeholder => "Phone Number", :class => "form-control" %>
               </div>  

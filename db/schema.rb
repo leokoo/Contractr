@@ -38,14 +38,54 @@ ActiveRecord::Schema.define(version: 20160104034653) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
+  create_table "job_skills", force: :cascade do |t|
+    t.string   "skill"
+    t.integer  "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "job_skills", ["job_id"], name: "index_job_skills_on_job_id", using: :btree
+
   create_table "jobs", force: :cascade do |t|
     t.string   "name"
     t.string   "pay_offer"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "job_status", default: 0, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "job_status",      default: 0, null: false
+    t.string   "skill_needed"
+    t.string   "required_skills"
   end
+
+  create_table "skills", force: :cascade do |t|
+    t.string   "skill"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "skills", ["user_id"], name: "index_skills_on_user_id", using: :btree
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -74,13 +114,30 @@ ActiveRecord::Schema.define(version: 20160104034653) do
     t.integer  "rate"
     t.string   "languages"
     t.string   "avatar"
+    t.string   "user_skills"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "up_vote",    default: 0
+    t.integer  "down_vote",  default: 0
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "skill_id"
+  end
+
+  add_index "votes", ["skill_id"], name: "index_votes_on_skill_id", using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
+
   add_foreign_key "bids", "jobs"
   add_foreign_key "bids", "users"
   add_foreign_key "identities", "users"
+  add_foreign_key "job_skills", "jobs"
+  add_foreign_key "skills", "users"
+  add_foreign_key "votes", "skills"
+  add_foreign_key "votes", "users"
 end
