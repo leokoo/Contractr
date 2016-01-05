@@ -16,5 +16,16 @@ class Job < ActiveRecord::Base
 	belongs_to :user
 	has_many :bids
 
+  before_validation :start_job, :on => :create
+
+	def days_to_go
+    (self.expiration_date.to_date - Date.today).to_i
+  end
+
 	searchkick
+
+  private
+    def start_job
+      self.expiration_date = 1.month.from_now
+    end
 end

@@ -15,7 +15,7 @@
           <div class="container">
             <h2><%= job.name %></h2>
             <p><%= job.short_description %></p>
-            <%= link_to "View Job", "#", class: "btn btn-success btn-lg" %>
+            <%= link_to "View Job", job_path(job), class: "btn btn-success btn-lg" %>
           </div>
         </div>
       </div>
