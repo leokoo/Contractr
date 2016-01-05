@@ -6,7 +6,7 @@
 
       <!-- Project Title -->
       <div class="title">
-      	<%= link_to job.name, "#" %>
+      	<%= link_to job.name, job_path(job) %>
 		  </div>
 
 	  <!-- Project Description -->
@@ -29,9 +29,10 @@
 	  	  <!-- percentage of funding -->
 	  	  <li>100% <br><span class="label">funded</span></li>
 	  	  <!-- total amount pledged (dollars) -->
-	  	  <li>3 <br><span class="label">bids</span></li>
+	  	  <li><%= job.bids.count %><br><span class="label">bids</span></li>
 	  	  <!-- days to go 'till deadline -->
 	  	  <li><%= job.days_to_go %><br><span class="label">days to go</span></li>
+	  	  <li><%= link_to "Bid for project", "#", class: "btn btn-success btn-lg" %></li>
 	    </ul>
       </div>
 
