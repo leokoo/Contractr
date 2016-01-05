@@ -49,6 +49,7 @@ class JobsController < ApplicationController
         task = Task.find(y[:id])
         task.update(:task_status => false)
       end
+    end
     job_skill = []
     if !params[:required_skills].nil?
       params[:required_skills].each_key do |key|
