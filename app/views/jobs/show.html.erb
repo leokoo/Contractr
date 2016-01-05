@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div>
 <h3><%= @job.name %></h3><br>
 
@@ -20,13 +19,22 @@
 
 	Job Pay : <%= @job.pay_offer %><br>
 	Job Owner : <%= @job.user.fullname %> <br>
-	Skills Required : <%= @job.required_skills.join(", ") %><br>
+	Skills Required : <%= @job.required_skills.join(", ") if @job.required_skills != nil %><br>
 	Job Status :
 		<% if @job.job_status == 0 %>
 			Open for bidding
 		<% elsif @job.job_status == 1 %>
 			Bidding closed	
-	<% end %>
+	<% end %><br>
+	<%if @job.job_status == 1 %>
+
+		<div class="completebar clearfix " data-percent="<%=@job.completion_status%>%">
+			<div class="completebar-title" style="background: #d35400;"><span>Percentage Completed</span></div>
+			<div class="completebar-bar" style="background: #e67e22;"></div>
+			<div class="complete-bar-percent"><%=@job.completion_status%>%</div>
+		</div>
+		
+	<%end%>
 </div>
 <!-- This part on top works! It works to show the status of the job -->
 		<% if @job.bids.count != 0 %>
@@ -124,3 +132,4 @@ $.ajax({
 	  });
 </script>
 -->
+	
