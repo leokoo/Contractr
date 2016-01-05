@@ -29,6 +29,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'font-awesome-sass', '~> 4.4.0'
+gem "jquery-ui-rails"
 
 #elasticsearch
 gem 'searchkick'

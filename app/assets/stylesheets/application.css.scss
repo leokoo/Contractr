@@ -1,8 +1,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "toastr";
-
 @import "profile";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "style";
+
+/*
+*= require jquery-ui
+*= require_self
+*= require bootstrap
+*= require font-awesome
+ */
 
 body {
  	color: #565a5c;
