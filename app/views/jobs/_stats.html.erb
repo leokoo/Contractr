@@ -1,14 +1,11 @@
 <div class="project-stats">
 	<div class="row">
-
 		<!-- number of backers -->
 		<div class="col-xs-4 col-sm-12">
 			<div class="val">
-				10
+				<%= @job.bids.count %>
 			</div>
-			<div class="lab">
-				backers
-			</div>
+			<div class="lab">bidders</div>
 		</div>
 
 		<!-- goal -->
@@ -25,6 +22,9 @@
 		<div class="col-xs-4 col-sm-12">
 			<div class="val">
 				<%= days_to_go %>
+			</div>
+			<div class="lab">
+				days to go
 			</div>
 		</div>
 
