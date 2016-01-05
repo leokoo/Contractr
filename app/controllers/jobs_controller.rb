@@ -49,7 +49,7 @@ class JobsController < ApplicationController
 
   def home
     @jobs = Job.all
-    @displayed_jobs = @jobs.last(1)
+    @displayed_jobs = Job.take(4)
   end
 
   def destroy

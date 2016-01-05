@@ -1,14 +1,14 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-      <% @jobs.count.times do |i| %>
+      <% @displayed_jobs.count.times do |i| %>
         <li data-target="#carousel-example-generic" data-slide-to="<%= i %>" class="<%= "active" if i.zero? %>"></li>
       <% end %>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <% @jobs.each_with_index do |job, index| %>
+    <% @displayed_jobs.each_with_index do |job, index| %>
       <div class="item <%= "active" if index.zero? %>">
         <img src="<%= job.image_url %>" alt="...">
       <div class="carousel-caption">
