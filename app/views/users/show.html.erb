@@ -45,10 +45,10 @@
 					</div>
 					<div class="user">
 						<div class="text-center">
-							<img src="img/user/user.jpg" class="img-circle">
+							<%= image_tag avatar_url(@user), class: "img-circle" %> 
 						</div>
 						<div class="user-head">
-							<h1>JONATHAN DOE</h1>
+							<h1><%= @user.fullname.upcase %></h1>
 							<div class="hr-center"></div>
 							<h5>Web <br>Developer</h5>
 						</div>
