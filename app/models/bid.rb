@@ -14,4 +14,15 @@
 class Bid < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :job
+
+	validates_presence_of :delivery_period, :bid_value, :bid_status, :job_id, :user_id
+
+  private
+
+  def generate_uuid!
+    begin
+      self.uuid = SecureRandom.hex(16)      
+    end while Bid.find_by(:uuid => self.uuid).present?
+  end
+  
 end
