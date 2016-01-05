@@ -20,24 +20,21 @@
 		</div>
 	</div>
 </div>
-	Jobs: <% @user.jobs.each do |job| %>
-	<%= job.name %>, 
-	<%end%><br>
+<strong>Jobs :</strong><br>
+	<% @user.jobs.each do |job| %>
+		<%= link_to job.name, job_path(job) %><br> 
+	<%end%><br><br>
 
-Skills:	<br><% @user.skills.each do |skill| %>
-	Like Count: <%= Vote.where("skill_id = #{skill.id}", "up_vote = 1").count %>
-	<%= skill.skill %> 
-	 by 
-	 <% unless skill.user_id == current_user.id %>
-	 <%= link_to("Like", user_skill_votes_path(current_user, skill, :up_vote => 1.to_i), :method => :post)%>
-	 <%end%>
-	<%skill.votes.each do |vote|%>
-<% if vote.user_id == current_user.id %>
- <%= link_to("Unlike", user_skill_vote_path(current_user, skill, vote), :method => :delete)%>
-<% end %>
-	<%= vote.user.fullname%>, 
-	<% end %><br>
+<strong>Skills :</strong><br> 
+	<% @user.skills.each do |skill| %>
+		<%= skill.skill %> 
+			<% unless skill.user_id == current_user.id %>
+				<%= link_to("Like", user_skill_votes_path(current_user, skill, :up_vote => 1.to_i), :method => :post) %>
+				<% skill.votes.each do |vote|%>
+					<% if vote.user_id == current_user.id %>
+						<%= link_to("Unlike", user_skill_vote_path(current_user, skill, vote), :method => :delete) %>
+				<% end %>	
+			<% end %>
 		<% end %>
-	<% if current_user.id == 1 %>
-	 <%= link_to "New Skill", new_user_skill_path(@user) %>
-	<%end%>
+		| <%= link_to Vote.where("skill_id = #{skill.id}", "up_vote = 1").count, user_skill_path(@user, skill) %><br>
+	<% end %>

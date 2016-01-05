@@ -18,21 +18,30 @@ class JobsController < ApplicationController
     if @job.save
 
       Job.reindex
-      redirect_to jobs_path
+      redirect_to jobs_path, notice: "Job Created"
     end
   end
 
   def edit
+    @job_skills = JobSkill.all
   end
 
   def show
   end
 
   def update
-  	@job.update(job_params)
-    Job.reindex
+    job_skill = []
+    if !params[:required_skills].nil?
+      params[:required_skills].each_key do |key|
+        job_skill << key
+      end
+    end 
+    @job.required_skills = job_skill
+    if @job.update(job_params)
 
-    redirect_to jobs_path
+      Job.reindex
+      redirect_to jobs_path, notice: "Job Updated"
+    end
   end
 
   def index
@@ -45,7 +54,7 @@ class JobsController < ApplicationController
     @job.destroy
     Job.reindex
 
-    redirect_to jobs_path
+    redirect_to jobs_path, notice: "Job Deleted"
   end
 
   private
@@ -54,6 +63,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-  	params.require(:job).permit(:name, :pay_offer, :job_status)
+  	params.require(:job).permit(:name, :pay_offer, :job_status, :required_skills)
   end
 end

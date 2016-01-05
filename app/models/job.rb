@@ -5,4 +5,9 @@ class Job < ActiveRecord::Base
 	has_many :bids
 
 	searchkick
+
+	def has_skill?(skill)
+  	return false if required_skills.nil?
+	  required_skills.include?(skill) 
+  end
 end

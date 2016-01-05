@@ -1,4 +1,8 @@
 class SkillsController < ApplicationController
+  def show
+    @skill = Skill.find(params[:id])
+  end
+
 	def new
     @user = current_user
   	@skill = Skill.new
