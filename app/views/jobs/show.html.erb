@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
 <h3><%= @job.name %></h3><br>
 
@@ -17,13 +18,14 @@
 	<%end%>
 </div>
 
-Job pay : <%= @job.pay_offer %><br>
-Job Owner : <%= @job.user.fullname %> <br>
-Job Status :
-	<% if @job.job_status == 0 %>
-		Open for bidding
-	<% elsif @job.job_status == 1 %>
-		Bidding closed	
+	Job Pay : <%= @job.pay_offer %><br>
+	Job Owner : <%= @job.user.fullname %> <br>
+	Skills Required : <%= @job.required_skills.join(", ") %><br>
+	Job Status :
+		<% if @job.job_status == 0 %>
+			Open for bidding
+		<% elsif @job.job_status == 1 %>
+			Bidding closed	
 	<% end %>
 </div>
 <!-- This part on top works! It works to show the status of the job -->

@@ -7,4 +7,9 @@ class Job < ActiveRecord::Base
 	accepts_nested_attributes_for :tasks, reject_if: :all_blank, allow_destroy: true
 
 	searchkick
+
+	def has_skill?(skill)
+  	return false if required_skills.nil?
+	  required_skills.include?(skill) 
+  end
 end

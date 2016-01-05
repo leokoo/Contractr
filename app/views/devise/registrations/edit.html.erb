@@ -22,7 +22,7 @@
 
               Skill List
               <% @skills.first(5).each do |userskill| %>
-                  <%= check_box_tag "user_skills[#{userskill.skill}]", "#{userskill.skill}", current_user.has_skill?(userskill.skill) %><%= userskill.skill %> <br>
+                  <%= check_box_tag "user_skills[#{userskill.skill}]", "#{userskill.skill}", current_user.has_skill?(userskill.skill) %><%= userskill.skill %><br>
               <%end%>
 
               <div class="form-group">

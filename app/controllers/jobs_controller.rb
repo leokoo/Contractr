@@ -20,7 +20,7 @@ class JobsController < ApplicationController
     end 
     @job.required_skills = job_skill
     if @job.save
-      redirect_to @job
+      redirect_to @job, notice: "Job Created"
     end
   end
 
@@ -49,9 +49,16 @@ class JobsController < ApplicationController
         task = Task.find(y[:id])
         task.update(:task_status => false)
       end
+    job_skill = []
+    if !params[:required_skills].nil?
+      params[:required_skills].each_key do |key|
+        job_skill << key
+      end
+    end 
+    @job.required_skills = job_skill
+    if @job.update(job_params)
+      redirect_to @job, notice: "Job Updated"
     end
-
-    redirect_to jobs_path
   end
 
   def index
@@ -64,7 +71,7 @@ class JobsController < ApplicationController
     @job.tasks.destroy_all
     @job.destroy
 
-    redirect_to jobs_path
+    redirect_to jobs_path, notice: "Job Deleted"
   end
 
   private
@@ -77,6 +84,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-  	params.require(:job).permit(:name, :pay_offer, :job_status, tasks_attributes: [:id, :name, :status, :_destroy])
+  	params.require(:job).permit(:name, :pay_offer, :job_status, :required_skills, tasks_attributes: [:id, :name, :status, :_destroy])
   end
 end

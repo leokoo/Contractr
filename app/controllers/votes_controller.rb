@@ -16,7 +16,7 @@ class VotesController < ApplicationController
     if @vote.save
       redirect_to :back, notice: "Thank You for your vote on #{@skill.skill}"
     else
-      redirect_to :back, notice: "You have voted on #{@skill.skill}"
+      redirect_to :back, notice: "You've already voted on #{@skill.skill}"
   	end
   end
   

@@ -8,9 +8,9 @@
 		<%= f.label :pay_offer%>
 		<%= f.text_field :pay_offer%>
 		</div>
-		<% @job_skills.each do |jobskill| %>
-		<%= check_box_tag "required_skills[#{jobskill.skill}]" %><%= jobskill.skill %><br>
-		<%end%>
+		<% @job_skills.all.each do |jobskill| %>
+			<%= check_box_tag "required_skills[#{jobskill.skill}]", "#{jobskill.skill}]", @job.has_skill?(jobskill.skill) %><%= jobskill.skill %><br>
+		<% end %>
 	<%elsif @new == false%>
 		<%if @bid.user_id == current_user.id%>
 			<h3><%= @job.name %></h3><br>
