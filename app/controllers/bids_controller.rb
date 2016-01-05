@@ -13,17 +13,20 @@
 
 class BidsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_job
   before_action :set_bid, only: [:show, :edit, :update, :destroy]
 
   def index
+    @job = Job.find(params[:job_id])
     @bids = Bid.all
   end
 
   def show
+    #we cannot show :job_id
+    # @job = Job.find(params[:job_id])
   end
 
   def new
+    @job = Job.find(params[:job_id])
     @bid = @job.bids.new
     @bid.user_id = current_user.id
   end
@@ -32,6 +35,7 @@ class BidsController < ApplicationController
   end
 
   def create
+    @job = Job.find(params[:job_id])
     @bid = @job.bids.new(bid_params)
     @bid.user_id = current_user.id
     if @bid.save
@@ -59,9 +63,6 @@ class BidsController < ApplicationController
       @bid = Bid.find(params[:id])
     end
 
-    def set_job
-      @job = Job.find(params[:job_id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bid_params

@@ -1,11 +1,13 @@
 <%= form_for([@job, @bid]) do |f| %>
 	<% if @bid.user.id == current_user.id && @bid.bid_status == 0 %>
 		<div class="field">
-		  <%= f.label :bid_value %><br>
-		  <%= f.number_field :bid_value %>
+		  <%= f.number_field :bid_value, placeholder: "Your bid value", class: "form-control" %>
+		</div>
+		<div class="field">
+		  <%= f.number_field :delivery_period , placeholder: "Delivery period in days", class: "form-control" %>
 		</div>
 		<div class="actions">
-		  <%= f.submit %>
+		  <%= f.submit class: "btn btn-primary wide"%>
 		</div>
 	<% end %>
 <% end %>
