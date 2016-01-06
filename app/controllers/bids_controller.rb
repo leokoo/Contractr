@@ -16,7 +16,7 @@ class BidsController < ApplicationController
   before_action :set_bid, only: [:show, :edit, :update, :destroy]
 
   def index
-    @job = Job.find(params[:job_id])
+    @job = Job.friendly.find(params[:job_id])
     @bids = Bid.all
   end
 
@@ -26,7 +26,7 @@ class BidsController < ApplicationController
   end
 
   def new
-    @job = Job.find(params[:job_id])
+    @job = Job.friendly.find(params[:job_id])
     @bid = @job.bids.new
     @bid.user_id = current_user.id
   end
@@ -35,7 +35,7 @@ class BidsController < ApplicationController
   end
 
   def create
-    @job = Job.find(params[:job_id])
+    @job = Job.friendly.find(params[:job_id])
     @bid = @job.bids.new(bid_params)
     @bid.user_id = current_user.id
     if @bid.save
