@@ -17,12 +17,8 @@
 
 class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
   before_action :authenticate_user!, except: [:index, :show, :home]
-=======
   after_action :reindex, only: [:create, :update, :destroy]
-
->>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
   def new
 
     @new = true
@@ -54,13 +50,10 @@ class JobsController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
     @days_to_go = @job.days_to_go
-=======
     @user = @job.user
     @job = Job.find(params[:id])
     @tasks = @job.tasks
->>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
   end
 
   def update
@@ -117,10 +110,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-<<<<<<< HEAD
-  	params.require(:job).permit(:name, :pay_offer, :job_status, :expiration_date, :short_description, :description, :image_url)
-=======
-  	params.require(:job).permit(:name, :pay_offer, :job_status, :required_skills, tasks_attributes: [:id, :name, :status, :_destroy])
->>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
+  	params.require(:job).permit(:name, :pay_offer, :job_status, :expiration_date, :short_description, :description, :image_url, :required_skills, tasks_attributes: [:id, :name, :status, :_destroy])
   end
 end
