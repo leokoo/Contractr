@@ -43,15 +43,15 @@
 					          		<div class="row" id="contact">
 					          			<div class="col-md-6">
 					          				<address>
-											  	<strong>Jonathan, Inc.</strong><br>
+											  	<strong><%= @user.fullname %>, Inc.</strong><br>
 											  	795 Folsom Ave, Suite 600<br>
 											  	San Francisco, CA 94107<br>
-											  	<abbr title="Phone">P:</abbr> (123) 456-7890
+											  	<abbr title="Phone">P:</abbr> <%= @user.phone_number %>
 											</address>
 
 											<address>
-											  	<strong>JONATHAN DOE</strong><br>
-											  	<a href="mailto:#">name@company.com</a>
+											  	<strong><%= @user.fullname.upcase %></strong><br>
+											  	<a href="mailto:#"><%= @user.email %></a>
 											</address>
 					          			</div>
 					          			<div class="col-md-6">
