@@ -14,6 +14,7 @@
 class Bid < ActiveRecord::Base
   extend FriendlyId
   friendly_id :uuid
+  self.primary_key = 'uuid'
   
 	belongs_to :user
 	belongs_to :job
