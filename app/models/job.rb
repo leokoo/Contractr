@@ -16,6 +16,9 @@
 #
 
 class Job < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+  
 	belongs_to :user
 	has_many :bids
   has_many :rewards
@@ -33,5 +36,12 @@ class Job < ActiveRecord::Base
   private
     def start_job
       self.expiration_date = 1.week.from_now
+    end
+
+    def slug_candidates
+      [
+        :name,
+        [:name, :created_at]
+      ]
     end
 end
