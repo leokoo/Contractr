@@ -95,6 +95,7 @@
 		
 
 			<div class="work-experience">
+				<h3>Votes</h3>
 		    	<% @user.skills.each do |skill| %>
 					<%= skill.skill %> 
 						<% unless skill.user_id == current_user.id %>

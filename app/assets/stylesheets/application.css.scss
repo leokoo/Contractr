@@ -8,9 +8,9 @@
 @import "style";
 
 /*
+*= require bootstrap
 *= require jquery-ui
 *= require_self
-*= require bootstrap
 *= require font-awesome
  */
 
@@ -21,7 +21,7 @@ body {
  }
 
 .container {
-	width: auto;
+	width: 95%;
 }
 
 .navbar-default {
