@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   # validates :email, uniqueness: true, allow_nil: true
 
   def self.from_omniauth(auth)
-    user = User.where(email: auth.info.email).first
+  	user = User.where(email: auth.info.email).first
 
     if user
       return user

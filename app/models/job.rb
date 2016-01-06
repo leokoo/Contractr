@@ -19,19 +19,19 @@ class Job < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
   
-  belongs_to :user
-  has_many :bids
+	belongs_to :user
+	has_many :bids
   has_many :rewards
 
   validates :name, :short_description, :description, :image_url, :expiration_date, presence: true
 
   before_validation :start_job, :on => :create
 
-  def days_to_go
+	def days_to_go
     (self.expiration_date.to_date - Date.today).to_i
   end
 
-  searchkick
+	searchkick
 
   private
     def start_job

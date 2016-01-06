@@ -18,11 +18,9 @@
 	<% i = 1%>
 	<%@jobs.each do |job|%>
 		<% user= job.user%>
-
 		<div class="col-sm-3">
 		<h3><%=i%>. <a href="/jobs/<%= job.id %>"><%=job.name%></a></h3>
 		<label>Price: </label><%= job.pay_offer%><br>
-		<label>Required Skills: </label> <%= job.required_skills.join(", ") if !job.required_skills.nil? %><br>
 			<% if job.bids.count != 0 %>
 				<label>Bids: </label><%= job.bids.count %>
 			<% else %>
