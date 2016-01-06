@@ -38,6 +38,8 @@ gem 'date_validator'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 # MomentJS
 gem 'momentjs-rails'
+# Friendly ID
+gem 'friendly_id', '~> 5.1.0'
 # ElasticSearch
 gem 'searchkick'
 
