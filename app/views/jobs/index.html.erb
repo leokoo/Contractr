@@ -41,7 +41,7 @@
 
 
 			<% elsif current_user.id == user.id && job.job_status == 1 %>
-				<button class="btn btn-default">Talk to your developer</button>
+				<button class="btn btn-default"><%= link_to "Talk to your developer", conversations_path(sender_id: current_user.id, recipient_id: job.bids.first.user), method: :post %></button>
 
 
 			<% else %>
@@ -59,7 +59,7 @@
 					<% job.bids.each do |bid| %>
 						<% if bid.user_id == current_user.id %>
 							<% if job.job_status == 1 %>
-								<button class="btn btn-default">Contact your customer</button>
+								<button class="btn btn-default"><%= link_to "Talk to your customer", conversations_path(sender_id: current_user, recipient_id: bid.job.user), method: :post %></button>
 							<% else %>
 								<%= link_to 'Adjust your bid', edit_bid_path(bid), class: "btn btn-default" %>
 							<% end %>

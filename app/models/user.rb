@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
          
   validates :fullname, presence: true, length: {maximum: 50}
-  validates_uniqueness_of :user_skills
   # validates :email, uniqueness: true, allow_nil: true
 
   has_many :jobs
