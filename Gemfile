@@ -25,7 +25,7 @@ gem 'toastr-rails'
 gem 'acts-as-taggable-on'
 gem 'linkedin'
 
-<<<<<<< HEAD
+
 # Font Awesome
 gem "font-awesome-rails"
 # Annotate Models
@@ -43,19 +43,14 @@ gem 'momentjs-rails'
 # Friendly ID
 gem 'friendly_id', '~> 5.1.0'
 # ElasticSearch
-=======
+gem 'searchkick'
 
 # Gems User Page 
-gem 'simple_form'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'font-awesome-sass', '~> 4.4.0'
 gem "jquery-ui-rails"
 # gem "chartkick"
-
-#elasticsearch
->>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
-gem 'searchkick'
 
 #cocoon for nested forms
 gem "cocoon"
