@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20160104082455) do
+=======
 ActiveRecord::Schema.define(version: 20160104034653) do
+>>>>>>> carliff_user_profile
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +90,12 @@ ActiveRecord::Schema.define(version: 20160104034653) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "tasks", force: :cascade do |t|
+    t.string  "name"
+    t.boolean "task_status", default: false
+    t.integer "job_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
