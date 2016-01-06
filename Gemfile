@@ -12,16 +12,17 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.4.1'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'toastr-rails'
-gem 'acts-as-taggable-on'
-
+gem 'linkedin'
 
 # Font Awesome
 gem "font-awesome-rails"
@@ -42,16 +43,6 @@ gem 'friendly_id', '~> 5.1.0'
 # ElasticSearch
 gem 'searchkick'
 
-# Gems User Page 
-gem 'carrierwave'
-gem 'cloudinary'
-gem 'font-awesome-sass', '~> 4.4.0'
-gem "jquery-ui-rails"
-# gem "chartkick"
-
-#cocoon for nested forms
-gem "cocoon"
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -66,4 +57,5 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
 

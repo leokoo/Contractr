@@ -18,68 +18,31 @@
 class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :home]
-  after_action :reindex, only: [:create, :update, :destroy]
   def new
-
-    @new = true
-  	@job = current_user.jobs.new
-    @job.tasks.new
-    @job_skills = JobSkill.all
+    @job = Job.new
   end
 
   def create
     @job = current_user.jobs.new(job_params)
 
-    job_skill = []
-    if !params[:required_skills].nil?
-      params[:required_skills].each_key do |key|
-        job_skill << key
-      end
-    end 
-    @job.required_skills = job_skill
     if @job.save
-      redirect_to @job, notice: "Job Created"
+      Job.reindex
+      redirect_to jobs_path
     end
   end
 
   def edit
-    @new = false
-    @job = Job.find(params[:id])
-    @bid = @job.bids.first
-    @job_skills = JobSkill.all
   end
 
   def show
     @days_to_go = @job.days_to_go
-    @user = @job.user
-    @job = Job.find(params[:id])
-    @tasks = @job.tasks
   end
 
   def update
-    @job = Job.find(params[:id])
-  	@job.update(job_params)
+    @job.update(job_params)
+    Job.reindex
 
-    params[:job][:tasks_attributes].each do |x,y|
-      
-      if y[:task_status] == "1"
-        task = Task.find(y[:id])
-        task.update(:task_status => true)
-      else
-        task = Task.find(y[:id])
-        task.update(:task_status => false)
-      end
-    end
-    job_skill = []
-    if !params[:required_skills].nil?
-      params[:required_skills].each_key do |key|
-        job_skill << key
-      end
-    end 
-    @job.required_skills = job_skill
-    if @job.update(job_params)
-      redirect_to @job, notice: "Job Updated"
-    end
+    redirect_to jobs_path
   end
 
   def index
@@ -93,11 +56,10 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find(params[:id])
-    @job.tasks.destroy_all
     @job.destroy
+    Job.reindex
 
-    redirect_to jobs_path, notice: "Job Deleted"
+    redirect_to jobs_path
   end
 
   private
@@ -105,11 +67,7 @@ class JobsController < ApplicationController
     @job = Job.friendly.find(params[:id])
   end
 
-  def reindex
-    Job.reindex
-  end
-
   def job_params
-  	params.require(:job).permit(:name, :pay_offer, :job_status, :expiration_date, :short_description, :description, :image_url, :required_skills, tasks_attributes: [:id, :name, :status, :_destroy])
+    params.require(:job).permit(:name, :pay_offer, :job_status, :expiration_date, :short_description, :description, :image_url)
   end
 end
