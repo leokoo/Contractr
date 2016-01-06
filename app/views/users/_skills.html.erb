@@ -22,7 +22,7 @@
 							<% end %>	
 						<% end %>
 					<% end %>
-					| <%= link_to Vote.where("skill_id = #{skill.id}", "up_vote = 1").count, user_skill_path(@user, skill) %><br>
+					 <%= link_to Vote.where("skill_id = #{skill.id}", "up_vote = 1").count, user_skill_path(@user, skill) %><br>
 				<% end %>
 			</div>
  	</div>

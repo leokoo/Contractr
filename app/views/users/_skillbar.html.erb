@@ -5,50 +5,94 @@
 
 <li>
  	<div class="timeline-badge warning"></div>
-	 	<div class="timeline-panel">
+	<div class="timeline-panel">
 	    	<h1>Skills</h1>
 	    	<div class="hr-left"></div>
-	    	<div class="skillbar clearfix " data-percent="90%">
-			<div class="skillbar-title" style="background: #16a085;"><span>HTML5</span></div>
-			<div class="skillbar-bar" style="background: #1abc9c;"></div>
-			<div class="skill-bar-percent">90%</div>
-		</div> <!-- End Skill Bar -->
 
-		<div class="skillbar clearfix " data-percent="85%">
-			<div class="skillbar-title" style="background: #2980b9;"><span>CSS3</span></div>
-			<div class="skillbar-bar" style="background: #3498db;"></div>
-			<div class="skill-bar-percent">85%</div>
-		</div> <!-- End Skill Bar -->
+	    	<% unless @user.skills.first == nil %>
+				<% a = @user.skills.first.votes.count %>
+				<% a10 = @user.skills.first.votes.count*10 %>
+				<% aname = @user.skills.first.skill %>
+				<div class="skillbar clearfix " data-percent=<%="#{a10}%"%>>
+					<div class="skillbar-title" style="background: #d35400;"><span><%="#{aname}"%></span></div>
+					<div class="skillbar-bar" style="background: #e67e22;"></div>
+					<div class="skill-bar-percent"><%="#{a} votes"%></div>
+				</div> <!-- End Skill Bar -->
+			<% end %>
 
-		<div class="skillbar clearfix " data-percent="70%">
-			<div class="skillbar-title" style="background: #2c3e50;"><span>jQuery</span></div>
-			<div class="skillbar-bar" style="background: #2c3e50;"></div>
-			<div class="skill-bar-percent">70%</div>
-		</div> <!-- End Skill Bar -->
 
-		<div class="skillbar clearfix " data-percent="50%">
-			<div class="skillbar-title" style="background: #c0392b;"><span>PHP</span></div>
-			<div class="skillbar-bar" style="background: #e74c3c;"></div>
-			<div class="skill-bar-percent">50%</div>
-		</div> <!-- End Skill Bar -->
+			<% unless @user.skills.second == nil %>			
+				<% b = @user.skills.second.votes.count %>
+				<% b10 = @user.skills.second.votes.count*10 %>
+				<% bname = @user.skills.second.skill %>
+				<div class="skillbar clearfix " data-percent=<%="#{b10}%"%>>
+					<div class="skillbar-title" style="background: #2980b9;"><span><%="#{bname}"%></span></div>
+					<div class="skillbar-bar" style="background: #3498db;"></div>
+					<div class="skill-bar-percent"><%="#{b} votes"%></div>
+				</div> <!-- End Skill Bar -->
+			<% end %>
 
-		<div class="skillbar clearfix " data-percent="75%">
-			<div class="skillbar-title" style="background: #2c3e50;"><span>Wordpress</span></div>
-			<div class="skillbar-bar" style="background: #34495e;"></div>
-			<div class="skill-bar-percent">75%</div>
-		</div> <!-- End Skill Bar -->
 
-		<div class="skillbar clearfix " data-percent="100%">
-			<div class="skillbar-title" style="background: #27ae60;"><span>SEO</span></div>
-			<div class="skillbar-bar" style="background: #2ecc71;"></div>
-			<div class="skill-bar-percent">100%</div>
-		</div> <!-- End Skill Bar -->
+			<% unless @user.skills.third == nil %>
+				<% c = @user.skills.third.votes.count %>
+				<% c10 = @user.skills.third.votes.count*10 %>
+				<% cname = @user.skills.third.skill %>
+				<div class="skillbar clearfix " data-percent=<%="#{c10}%"%>>
+					<div class="skillbar-title" style="background: #2c3e50;"><span><%="#{cname}"%></span></div>
+					<div class="skillbar-bar" style="background: #2c3e50;"></div>
+					<div class="skill-bar-percent"><%="#{c} votes"%></div>
+				</div> <!-- End Skill Bar -->
+			<% end %>
 
-		<div class="skillbar clearfix " data-percent="70%">
-			<div class="skillbar-title" style="background: #f39c12;"><span>Photoshop</span></div>
-			<div class="skillbar-bar" style="background: #f1c40f;"></div>
-			<div class="skill-bar-percent">70%</div>
-		</div> <!-- End Skill Bar -->
+			
+			<% unless @user.skills.fourth == nil %>
+				<% d = @user.skills.fourth.votes.count %>
+				<% d10 = @user.skills.fourth.votes.count*10 %>
+				<% dname = @user.skills.fourth.skill %>
+				<div class="skillbar clearfix " data-percent=<%="#{d10}%"%>>
+					<div class="skillbar-title" style="background: #46465e;"><span><%="#{dname}"%></span></div>
+					<div class="skillbar-bar" style="background: #5a68a5;"></div>
+					<div class="skill-bar-percent"><%="#{d} votes"%></div>
+				</div> <!-- End Skill Bar -->
+			<% end %>
+
+			
+			<% unless @user.skills.fifth == nil %>
+				<% e = @user.skills.fifth.votes.count %>
+				<% e10 = @user.skills.fifth.votes.count*10 %>
+				<% ename = @user.skills.fifth.skill %>
+				<div class="skillbar clearfix " data-percent=<%="#{e10}%"%>>
+					<div class="skillbar-title" style="background: #333333;"><span><%="#{ename}"%></span></div>
+					<div class="skillbar-bar" style="background: #525252;"></div>
+					<div class="skill-bar-percent"><%="#{e} votes"%></div>
+				</div> <!-- End Skill Bar -->
+			<% end %>
+
+			
+			<% unless @user.skills[5] == nil %>
+				<% f = @user.skills[5].votes.count %>
+				<% f10 = @user.skills[5].votes.count*10 %>
+				<% fname = @user.skills[5].skill %>
+				<div class="skillbar clearfix " data-percent=<%="#{f10}%"%>>
+					<div class="skillbar-title" style="background: #27ae60;"><span><%="#{fname}"%></span></div>
+					<div class="skillbar-bar" style="background: #2ecc71;"></div>
+					<div class="skill-bar-percent"><%="#{f} votes"%></div>
+				</div> <!-- End Skill Bar -->
+			<% end %>
+
+			
+			<% unless @user.skills[6] == nil %>
+				<% g = @user.skills[6].votes.count %>
+				<% g10 = @user.skills[6].votes.count*10 %>
+				<% gname = @user.skills[6].skill %>
+				<div class="skillbar clearfix " data-percent=<%="#{g}%"%>>
+					<div class="skillbar-title" style="background: #124e8c;"><span><%="#{gname}"%></span></div>
+					<div class="skillbar-bar" style="background: #4288d0;"></div>
+					<div class="skill-bar-percent"><%="#{g} votes"%></div>
+				</div> <!-- End Skill Bar -->
+			<% end %>
+
+		
 
 			<div class="work-experience">
 		    	<% @user.skills.each do |skill| %>
@@ -63,7 +107,7 @@
 							<% end %>	
 						<% end %>
 					<% end %>
-					| <%= link_to Vote.where("skill_id = #{skill.id}", "up_vote = 1").count, user_skill_path(@user, skill) %><br>
+					 <%= link_to Vote.where("skill_id = #{skill.id}", "up_vote = 1").count, user_skill_path(@user, skill) %><br>
 				<% end %>
 			</div>
  	</div>

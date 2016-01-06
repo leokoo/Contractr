@@ -33,23 +33,33 @@
 			</div>
 			<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
 				<div id="content">
-					
-
-					<%= render partial: 'navbar' %>
 
 					<!-- start:main content -->
 					<div class="main-content">
 						<ul class="timeline">
-							
+
+							<li id="id-profile">
+								<div class="timeline-badge default"><i class="fa fa-user"></i></div>
+								<h1 class="timeline-head">ABOUT ME</h1>
+							</li>
+					        <li id="profile">
+					          	<div class="timeline-badge primary"></div>
+					          	<div class="timeline-panel">
+					          		<h1>Hello, I am <strong><%= @user.fullname.upcase %></strong></h1>
+					          		<h4>Web Designer and Web developer</h4>
+					          		<div class="hr-left"></div>
+					          		
+					          		<p><%= @user.description %>.</p>
+					          	</div>
+					        </li>
+
+							<%= render partial: 'skillbar' %>
+
 							<%= render partial: 'profile' %>
 
 					      <%= render partial: 'jobs2' %>
 
 					      <%= render partial: 'resume' %>
-
-					      <%= render partial: 'skillbar' %>
-
-					      <%= render partial: 'skills' %>
 
 					      <%= render partial: 'blog' %>
 
