@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
   after_action :reindex, only: [:create, :update, :destroy]
+
   def new
 
     @new = true

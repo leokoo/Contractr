@@ -24,6 +24,16 @@ gem 'figaro'
 gem 'toastr-rails'
 gem 'acts-as-taggable-on'
 gem 'linkedin'
+
+
+# Gems User Page 
+gem 'simple_form'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'font-awesome-sass', '~> 4.4.0'
+gem "jquery-ui-rails"
+# gem "chartkick"
+
 #elasticsearch
 gem 'searchkick'
 

@@ -1,0 +1,29 @@
+<li id="id-skills">
+	<div class="timeline-badge default"><i class="fa fa-comments"></i></div>
+	<h1 class="timeline-head">Skills</h1>
+</li>
+
+
+<li>
+ 	<div class="timeline-badge warning"></div>
+ 	<div class="timeline-panel">
+    	<h1>Skills</h1>
+    	<div class="hr-left"></div>
+	    	<div>
+		    	<% @user.skills.each do |skill| %>
+					<%= skill.skill %> 
+						<% unless skill.user_id == current_user.id %>
+							<% unless current_user.votes.exists?(skill.votes) %>
+								<%= link_to("Like", user_skill_votes_path(current_user, skill, :up_vote => 1.to_i), :method => :post) %>
+							<% end %>
+							<% skill.votes.each do |vote|%>
+								<% if vote.user_id == current_user.id %>
+									<%= link_to("Unlike", user_skill_vote_path(current_user, skill, vote), :method => :delete) %>
+							<% end %>	
+						<% end %>
+					<% end %>
+					 <%= link_to Vote.where("skill_id = #{skill.id}", "up_vote = 1").count, user_skill_path(@user, skill) %><br>
+				<% end %>
+			</div>
+ 	</div>
+</li>
