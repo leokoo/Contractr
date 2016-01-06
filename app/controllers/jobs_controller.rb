@@ -33,6 +33,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @user = @job.user
     @job = Job.find(params[:id])
     @tasks = @job.tasks
   end
