@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: carliff
+  api_key: '529666994854441'
+  api_secret: SIPeBjfE17QMaxjuLjPMLAB7Lrk
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: carliff
+  api_key: '529666994854441'
+  api_secret: SIPeBjfE17QMaxjuLjPMLAB7Lrk
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: carliff
+  api_key: '529666994854441'
+  api_secret: SIPeBjfE17QMaxjuLjPMLAB7Lrk
+  enhance_image_tag: true
+  static_image_support: false

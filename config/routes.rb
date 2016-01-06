@@ -7,13 +7,28 @@ Rails.application.routes.draw do
               :controllers => {:omniauth_callbacks => 'omniauth_callbacks',
                                 :registrations => 'registrations'
                               }
+<<<<<<< HEAD
 resources :jobs do
   resources :bids, shallow: true
 end
+=======
+  resources :jobs do
+    puts :update_status  
+    resources :bids, shallow: true
+  end
 
-resources :users, only: [:show]
+  resources :users, only: [:show]
+>>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
 
+  resources :job_skills
 
+  resources :users, only: [:show] do
+    resources :skills do
+      resources :votes
+    end
+  end
+
+  resources :skills
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

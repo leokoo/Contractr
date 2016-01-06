@@ -1,0 +1,37 @@
+<%= form_for(@job) do |f| %>
+	<%if current_user.id == @job.user_id%>
+		<div>
+		<%= f.label :name%>
+		<%= f.text_field :name%>
+		</div>
+		<div>
+		<%= f.label :pay_offer%>
+		<%= f.text_field :pay_offer%>
+		</div>
+		<% @job_skills.all.each do |jobskill| %>
+			<%= check_box_tag "required_skills[#{jobskill.skill}]", "#{jobskill.skill}]", @job.has_skill?(jobskill.skill) %><%= jobskill.skill %><br>
+		<% end %>
+	<%elsif @new == false%>
+		<%if @bid.user_id == current_user.id%>
+			<h3><%= @job.name %></h3><br>
+			Job pay : <%= @job.pay_offer %><br>
+			Job Owner : <%= @job.user.fullname %> <br>
+		<% end %>
+	<%end%>
+		<h3>Tasks</h3>
+		<div class="tasks">
+    	<%= f.fields_for :tasks do |ff|%>
+      		<%= render 'task_fields', f: ff%>
+    	<%end%>
+    	<%= link_to_add_association 'add task', f, :tasks%>
+    	</div>
+    	<%if @new == true%>
+		<div>
+		<%= f.submit :'Create Job', class: "btn btn-default" %>
+		</div>
+		<%else%>
+		<div>
+		<%= f.submit :'Update Job', class: "btn btn-default" %>
+		</div>
+		<%end%>
+	<% end %>

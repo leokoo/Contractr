@@ -9,14 +9,35 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
+//= require bootstrap
 //= require jquery
-//= require jquery_ujs
-//= require toastr
+//= require jquery-ui
 //= require turbolinks
+<<<<<<< HEAD
 //= require bootstrap-sprockets
 //= require bootstrap-wysihtml5
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
 //= require_tree .
+=======
+//= require jquery_ujs
+//= require_tree .
+//= require bootstrap-sprockets
+//= require toastr
+
+jQuery(document).ready(function(){
+	jQuery('.skillbar').each(function(){
+		jQuery(this).find('.skillbar-bar').animate({
+			width:jQuery(this).attr('data-percent')
+		},6000);
+	});
+
+	jQuery('.completebar').each(function(){
+		jQuery(this).find('.completebar-bar').animate({
+	width:jQuery(this).attr('data-percent')
+		},6000);
+	});
+});
+>>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d

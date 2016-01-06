@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  skill: MyString
+  user_id: 
+
+two:
+  skill: MyString
+  user_id: 
