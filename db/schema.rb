@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104082455) do
+ActiveRecord::Schema.define(version: 20160106004413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,23 @@ ActiveRecord::Schema.define(version: 20160104082455) do
 
   add_index "bids", ["job_id"], name: "index_bids_on_job_id", using: :btree
   add_index "bids", ["user_id"], name: "index_bids_on_user_id", using: :btree
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "group_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -57,6 +74,17 @@ ActiveRecord::Schema.define(version: 20160104082455) do
     t.string   "skill_needed"
     t.string   "required_skills"
   end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "skills", force: :cascade do |t|
     t.string   "skill"
@@ -138,6 +166,8 @@ ActiveRecord::Schema.define(version: 20160104082455) do
   add_foreign_key "bids", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "job_skills", "jobs"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "skills", "users"
   add_foreign_key "votes", "skills"
   add_foreign_key "votes", "users"
