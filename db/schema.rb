@@ -116,13 +116,13 @@ ActiveRecord::Schema.define(version: 20160106094309) do
     t.string   "image"
     t.string   "phone_number"
     t.text     "description"
+    t.string   "user_skills"
+    t.string   "braintree_id"
     t.text     "twitter"
     t.text     "facebook"
     t.integer  "rate"
     t.string   "languages"
     t.string   "avatar"
-    t.string   "user_skills"
-    t.string   "braintree_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

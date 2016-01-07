@@ -40,6 +40,8 @@ gem 'searchkick'
 #cocoon for nested forms
 gem "cocoon"
 
+#payment gateway(braintree)
+gem "braintree"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
