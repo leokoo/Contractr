@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
 
 def index
 	@groups = Group.all
+end
 
 def show
 	@group = Group.find(params[:id]) 
@@ -50,5 +51,5 @@ private
     params.require(:group).permit(:group_name, :text)
   end
 
-end
+
 end
