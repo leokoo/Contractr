@@ -18,7 +18,7 @@
 </div>
 
 	Job Pay : <%= @job.pay_offer %><br>
-	Job Owner : <%= @job.user.fullname %> <br>
+	Job Owner : <%= link_to @job.user.fullname, user_path(@user) %> <br>
 	Skills Required : <%= @job.required_skills.join(", ") if @job.required_skills != nil %><br>
 	Job Status :
 		<% if @job.job_status == 0 %>
@@ -35,6 +35,7 @@
 		</div>
 		
 	<%end%>
+
 </div>
 <!-- This part on top works! It works to show the status of the job -->
 		<% if @job.bids.count != 0 %>
@@ -117,6 +118,8 @@
 		<% else %>
 		 No Bids Yet
 		<% end %>
+		
+
 	</div>
 </div>
 

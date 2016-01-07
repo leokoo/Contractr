@@ -116,6 +116,11 @@ ActiveRecord::Schema.define(version: 20160106094309) do
     t.string   "image"
     t.string   "phone_number"
     t.text     "description"
+    t.text     "twitter"
+    t.text     "facebook"
+    t.integer  "rate"
+    t.string   "languages"
+    t.string   "avatar"
     t.string   "user_skills"
     t.string   "braintree_id"
   end
