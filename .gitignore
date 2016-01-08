@@ -18,9 +18,5 @@
 
 # Ignore application configuration
 /config/application.yml
-<<<<<<< HEAD
-/.project
-=======
 /.byebug_history
 /db/schema.rb
->>>>>>> 0f8ce44d8b28c4ea777d0ff050d7b5cf59138e55

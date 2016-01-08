@@ -16,10 +16,3 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
-jQuery(document).ready(function(){
-	jQuery('.completebar').each(function(){
-		jQuery(this).find('.completebar-bar').animate({
-			width:jQuery(this).attr('data-percent')
-		},6000);
-	});
-});
