@@ -3,8 +3,8 @@
 @import "toastr";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "style";
 @import "settings";
+@import "style";
 
 // importing sass files
 @import "landing";
@@ -15,6 +15,13 @@
 // wysiwyg bootstrap
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 @import "bootstrap-datetimepicker";
+
+/*
+*= require jquery-ui
+*= require_self
+*= require bootstrap
+*= require font-awesome
+ */
 
 body {
  	color: #565a5c;

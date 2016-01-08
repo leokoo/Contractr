@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160106040354) do
+=======
+ActiveRecord::Schema.define(version: 20160104082455) do
+>>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +70,7 @@ ActiveRecord::Schema.define(version: 20160106040354) do
     t.string   "name"
     t.string   "pay_offer"
     t.integer  "user_id"
+<<<<<<< HEAD
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "job_status",        default: 0, null: false
@@ -74,21 +79,13 @@ ActiveRecord::Schema.define(version: 20160106040354) do
     t.text     "description"
     t.string   "image_url"
     t.string   "slug"
+=======
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "job_status",      default: 0, null: false
     t.string   "skill_needed"
     t.string   "required_skills"
   end
-
-  create_table "rewards", force: :cascade do |t|
-    t.integer  "job_id"
-    t.text     "description"
-    t.integer  "value"
-    t.integer  "number_available"
-    t.date     "estimated_delivery"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
-  add_index "rewards", ["job_id"], name: "index_rewards_on_job_id", using: :btree
 
   create_table "skills", force: :cascade do |t|
     t.string   "skill"
@@ -123,7 +120,20 @@ ActiveRecord::Schema.define(version: 20160106040354) do
     t.string  "name"
     t.boolean "task_status", default: false
     t.integer "job_id"
+>>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
   end
+
+  create_table "rewards", force: :cascade do |t|
+    t.integer  "job_id"
+    t.text     "description"
+    t.integer  "value"
+    t.integer  "number_available"
+    t.date     "estimated_delivery"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "rewards", ["job_id"], name: "index_rewards_on_job_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -151,8 +161,8 @@ ActiveRecord::Schema.define(version: 20160106040354) do
     t.text     "facebook"
     t.integer  "rate"
     t.string   "languages"
-    t.string   "user_skills"
     t.string   "avatar"
+    t.string   "user_skills"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -174,9 +184,12 @@ ActiveRecord::Schema.define(version: 20160106040354) do
   add_foreign_key "bids", "jobs"
   add_foreign_key "bids", "users"
   add_foreign_key "identities", "users"
-  add_foreign_key "job_skills", "jobs"
+<<<<<<< HEAD
   add_foreign_key "rewards", "jobs"
+=======
+  add_foreign_key "job_skills", "jobs"
   add_foreign_key "skills", "users"
   add_foreign_key "votes", "skills"
   add_foreign_key "votes", "users"
+>>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
 end
