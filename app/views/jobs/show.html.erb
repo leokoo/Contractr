@@ -46,6 +46,16 @@
 
 
 <div>
+<<<<<<< HEAD
+Job Pay : <%= @job.pay_offer %><br>
+Job Owner : <%= @job.user.fullname %> <br>
+Job Status :
+	<% if @job.job_status == 0 %>
+		Open for bidding
+	<% elsif @job.job_status == 1 %>
+		Bidding closed	
+	<% end %>
+=======
 <h3><%= @job.name %></h3><br>
 
 <div>
@@ -62,6 +72,7 @@
 	<% else%>
 		No Task for this job.
 	<%end%>
+>>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
 </div>
 
 	Job Pay : <%= @job.pay_offer %><br>
