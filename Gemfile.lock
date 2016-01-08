@@ -271,7 +271,7 @@ DEPENDENCIES
   annotate!
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 3.3, >= 3.3.4.1)
+  bootstrap-sass (~> 3.3.6)
   bootstrap-wysihtml5-rails!
   byebug
   carrierwave

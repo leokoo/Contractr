@@ -6,15 +6,18 @@
 @import "style";
 @import "settings";
 
-// importing scss files
+// importing sass files
 @import "landing";
 @import "jobs";
 @import "variables";
-@import "profile";
 
 // wysiwyg bootstrap
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 @import "bootstrap-datetimepicker";
+
+/*
+ *= require font-awesome
+ */
 
 body {
  	color: #565a5c;
