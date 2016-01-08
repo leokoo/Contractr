@@ -1,22 +1,74 @@
-<div class="row">
-	<div class="col-md-3">
-		<div class="center">
-		<%= image_tag avatar_url(@user), class: "avatar-full" %>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">Verification</div>
-		<div class="panel-body">
-			Email Address<br>
-			Phone Number
+<!-- start:main -->
+	<div class="container" id="main">
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+				<div id="sidebar">
+					<div class="sosmed">
+						<div class="text-center">
+							<a href="#"><i class="fa fa-facebook fa-2x" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter fa-2x" data-toggle="tooltip" data-placement="top" title="Twitter"></i></a>
+							<a href="#"><i class="fa fa-google-plus fa-2x" data-toggle="tooltip" data-placement="top" title="Google Plus"></i></a>
+						</div>
+					</div>
+					<div class="user">
+						<div class="text-center">
+							<%= image_tag avatar_url(@user), class: "img-circle" %> 
+						</div>
+						<div class="user-head">
+							<h1><%= @user.fullname.upcase %></h1>
+							<div class="hr-center"></div>
+							<h5>Web <br>Developer</h5>
+							<p>Member Since: <%= @user.created_at.strftime("%b %d, %Y") %> </p>
+						</div>
+					</div>
+					<div class="link-me">
+						<div class="text-center">
+							<a href="#"><i class="fa fa-download fa-2x" data-toggle="tooltip" data-placement="top" title="Download My CV"></i></a>
+							<a href="#"><i class="fa fa-flag fa-2x" data-toggle="tooltip" data-placement="top" title="Get in Touch"></i></a>
+							<a href="#"><i class="fa fa-money fa-2x" data-toggle="tooltip" data-placement="top" title="Hire Me"></i></a>
+						</div>
+						<div class="hr-center"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+				<div id="content">
+
+					<!-- start:main content -->
+					<div class="main-content">
+						<ul class="timeline">
+
+							<li id="id-profile">
+								<div class="timeline-badge default"><i class="fa fa-user"></i></div>
+								<h1 class="timeline-head">ABOUT ME</h1>
+							</li>
+					        <li id="profile">
+					          	<div class="timeline-badge primary"></div>
+					          	<div class="timeline-panel">
+					          		<h1>Hello, I am <strong><%= @user.fullname.upcase %></strong></h1>
+					          		<h4>Web Designer and Web developer</h4>
+					          		<div class="hr-left"></div>
+					          		
+					          		<p><%= @user.description %>.</p>
+					          	</div>
+					        </li>
+
+							<%= render partial: 'skillbar' %>
+
+							<%= render partial: 'profile' %>
+
+					      <%= render partial: 'jobs2' %>
+
+					      <%= render partial: 'resume' %>
+
+					      <%= render partial: 'contact' %>
+					   </ul>
+					</div>
+					<!-- end:main content -->
+				</div>
 			</div>
 		</div>
 	</div>
+	<!-- end:main -->
 
-	<div class="col-md-9">
-		<h2><%= @user.fullname %></h2>
-
-		<div class="description row-space-3">
-			<%= @user.description %>
-		</div>
-	</div>
-</div>
+	<%= render partial: 'footer' %>

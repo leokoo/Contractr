@@ -19,16 +19,16 @@ class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :home]
   def new
-  	@job = Job.new
+    @job = Job.new
   end
 
   def create
-  	@job = current_user.jobs.new(job_params)
+    @job = current_user.jobs.new(job_params)
 
-  	if @job.save
-  		Job.reindex
-  		redirect_to jobs_path
-  	end
+    if @job.save
+      Job.reindex
+      redirect_to jobs_path
+    end
   end
 
   def edit
@@ -39,15 +39,15 @@ class JobsController < ApplicationController
   end
 
   def update
-  	@job.update(job_params)
+    @job.update(job_params)
     Job.reindex
 
     redirect_to jobs_path
   end
 
   def index
-  	query = params[:q].presence || "*"
-  	@jobs = Job.search(query).to_a.flatten.uniq
+    query = params[:q].presence || "*"
+    @jobs = Job.search(query).to_a.flatten.uniq
   end
 
   def home
@@ -56,7 +56,7 @@ class JobsController < ApplicationController
   end
 
   def destroy
-  	@job.destroy
+    @job.destroy
     Job.reindex
 
     redirect_to jobs_path
@@ -68,6 +68,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-  	params.require(:job).permit(:name, :pay_offer, :job_status, :expiration_date, :short_description, :description, :image_url)
+    params.require(:job).permit(:name, :pay_offer, :job_status, :expiration_date, :short_description, :description, :image_url)
   end
 end

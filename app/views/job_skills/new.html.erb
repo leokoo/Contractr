@@ -1,0 +1,13 @@
+<center>
+<div>
+	<%= form_for [@job, @job_skill] do |f| %>
+		<div>
+			<%= f.label :skill %>
+			<%= f.text_field :skill%>
+		</div>
+		<div>
+			<%= f.submit :'Create Job Skill', class: "btn btn-default" %>
+		</div>
+	<% end %>
+</div>
+</center>
