@@ -1,0 +1,31 @@
+<div class="project-stats">
+	<div class="row">
+		<!-- number of backers -->
+		<div class="col-xs-4 col-sm-12">
+			<div class="val">
+				<%= @job.bids.count %>
+			</div>
+			<div class="lab">bidders</div>
+		</div>
+
+		<!-- goal -->
+		<div class="col-xs-4 col-sm-12">
+			<div class="val">
+				<%= number_to_currency(@job.pay_offer, unit: "$", precision: 0) %>
+			</div>
+			<div class="lab">pay offer</div>
+			</div>
+		</div>
+
+		<!-- days to go -->
+		<div class="col-xs-4 col-sm-12">
+			<div class="val">
+				<%= days_to_go %>
+			</div>
+			<div class="lab">
+				days to go
+			</div>
+		</div>
+
+	</div>
+</div>

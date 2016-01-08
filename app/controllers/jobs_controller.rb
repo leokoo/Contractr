@@ -1,7 +1,24 @@
+# == Schema Information
+#
+# Table name: jobs
+#
+#  id                :integer          not null, primary key
+#  name              :string
+#  pay_offer         :string
+#  user_id           :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  job_status        :integer          default(0), not null
+#  expiration_date   :datetime
+#  short_description :text
+#  description       :text
+#  image_url         :string
+#
+
 class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show, :home]
   after_action :reindex, only: [:create, :update, :destroy]
-
   def new
 
     @new = true
@@ -33,6 +50,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @days_to_go = @job.days_to_go
     @user = @job.user
     @job = Job.find(params[:id])
     @tasks = @job.tasks
@@ -69,6 +87,11 @@ class JobsController < ApplicationController
     @jobs = Job.search(query).to_a.flatten.uniq
   end
 
+  def home
+    @jobs = Job.all
+    @displayed_jobs = Job.take(4)
+  end
+
   def destroy
     @job = Job.find(params[:id])
     @job.tasks.destroy_all
@@ -79,7 +102,7 @@ class JobsController < ApplicationController
 
   private
   def set_jobs
-    @job = Job.find(params[:id])
+    @job = Job.friendly.find(params[:id])
   end
 
   def reindex
@@ -87,6 +110,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-  	params.require(:job).permit(:name, :pay_offer, :job_status, :required_skills, tasks_attributes: [:id, :name, :status, :_destroy])
+  	params.require(:job).permit(:name, :pay_offer, :job_status, :expiration_date, :short_description, :description, :image_url, :required_skills, tasks_attributes: [:id, :name, :status, :_destroy])
   end
 end

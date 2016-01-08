@@ -1,3 +1,50 @@
+<div class="project-intro">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h2 class="project-title"><%= @job.name %></h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<%= link_to image_tag(@job.image_url, alt: @job.name, width: '100%'), job_path(@job) %>
+			</div>
+			<div class="col-md-4">
+				<div class="project-mgmt">
+					<%= link_to 'Edit', edit_job_path(@job) %>
+					<%= link_to 'Delete', job_path(@job), method: :delete, data: {confirm: "Are you sure?"} %>
+				</div>
+				<%= render 'stats', job: @job, days_to_go: @days_to_go %>
+				<%= link_to 'See job bidders', job_bids_path(@job), class: "btn btn-success btn-lg" %>
+				<%= link_to 'Bid for this project', new_job_bid_path(@job), class: "btn btn-success btn-lg" %>
+				<p class="project-time">This job will expire in 3 days.</p>
+			</div>
+		</div>
+
+		<!-- small description -->
+		<div clas="row">
+			<div class="col-md-8">
+				<p class="project-small-description"><%= @job.short_description %></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- rewards -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h3 class="project-subtitle">About this project</h3>
+			<p><%= @job.description %></p>
+		</div>
+		<div class="col-md-4">
+			<p>Rewards will be rendered in here ...</p>
+			<%= link_to 'Add Reward', "#", class: "btn btn-primary" %>
+		</div>
+	</div>
+</div>
+
+
 <div>
 <h3><%= @job.name %></h3><br>
 

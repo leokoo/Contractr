@@ -1,0 +1,25 @@
+<table class="table table-hover">
+
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Job</th>
+			<th>Bid</th>
+			<th>Delivery Period?</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% if bids.any? %>
+			<% bids.each do |bid| %>
+				<% if bid.job_id == @job.id %>
+					<%= render 'bid', bid: bid %>
+				<% end %>
+			<% end %>
+		<% else %>
+			<tr>
+				<td colspan="4">No bids available</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,21 +1,17 @@
 Rails.application.routes.draw do
 
-  root 'pages#home'
+  root 'jobs#home'
   devise_for  :users, 
               :path => '', 
               :path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
               :controllers => {:omniauth_callbacks => 'omniauth_callbacks',
                                 :registrations => 'registrations'
                               }
-  resources :jobs do
-    puts :update_status  
-    resources :bids, shallow: true
-  end
-
-  resources :users, only: [:show]
+resources :jobs do
+  resources :bids, shallow: true
+end
 
   resources :job_skills
-
   resources :users, only: [:show] do
     resources :skills do
       resources :votes
