@@ -18,7 +18,7 @@
 </div>
 
 	Job Pay : <%= @job.pay_offer %><br>
-	Job Owner : <%= link_to @job.user.fullname, user_path(@user) %> <br>
+	Job Owner : <%= @job.user.fullname %> <br>
 	Skills Required : <%= @job.required_skills.join(", ") if @job.required_skills != nil %><br>
 	Job Status :
 		<% if @job.job_status == 0 %>
@@ -118,8 +118,7 @@
 		<% else %>
 		 No Bids Yet
 		<% end %>
-		
-
+		<% end %>
 	</div>
 </div>
 

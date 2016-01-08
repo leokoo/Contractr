@@ -56,6 +56,9 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (8.2.1)
+<<<<<<< HEAD
+    cocoon (1.2.6)
+=======
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -64,7 +67,7 @@ GEM
     cloudinary (1.1.2)
       aws_cf_signer
       rest-client
-    cocoon (1.2.6)
+>>>>>>> carliff_user_profile
     coderay (1.1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -252,9 +255,12 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.6)
   byebug
+<<<<<<< HEAD
+  cocoon
+=======
   carrierwave
   cloudinary
-  cocoon
+>>>>>>> carliff_user_profile
   coffee-rails (~> 4.1.0)
   devise
   figaro
