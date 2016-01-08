@@ -1,19 +1,11 @@
 class User < ActiveRecord::Base
-
-  mount_uploader :avatar, AvatarUploader
-
   acts_as_taggable
   acts_as_taggable_on :skills
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :identities
   has_many :bids
   has_many :jobs
-  has_many :skills
-  has_many :votes
-  serialize :user_skills
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
          
@@ -21,6 +13,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :user_skills
   # validates :email, uniqueness: true, allow_nil: true
 
+  has_many :jobs
+  has_many :skills
+  has_many :votes
+  serialize :user_skills
 
   def self.from_omniauth(auth)
   	user = User.where(email: auth.info.email).first
