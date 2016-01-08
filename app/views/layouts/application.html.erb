@@ -2,18 +2,23 @@
 <html>
 <head>
   <title>Contractr</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag :cocoon %>
+
   <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
+
 <body>
-  <%= render "shared/navbar" %>
-  <%= render "shared/message" %>
-    <div class="container">
-      <%= yield %>
+   <%= render "shared/navbar" %>
+   <%= render "shared/message" %>
+    <div class="container-fluid">
+    	<%= yield %>
     </div> <!-- /container -->
-  
-  <%= render "shared/footer" %>
+	
+	<%= render "shared/footer" %>
 
 </body>
 </html>
