@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106040354) do
+ActiveRecord::Schema.define(version: 20160104082455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,28 +20,13 @@ ActiveRecord::Schema.define(version: 20160106040354) do
     t.integer  "bid_value"
     t.integer  "user_id"
     t.integer  "job_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "bid_status",      default: 0, null: false
-    t.string   "uuid"
-    t.integer  "delivery_period"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "bid_status", default: 0, null: false
   end
 
   add_index "bids", ["job_id"], name: "index_bids_on_job_id", using: :btree
   add_index "bids", ["user_id"], name: "index_bids_on_user_id", using: :btree
-
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
-    t.string   "sluggable_type", limit: 50
-    t.string   "scope"
-    t.datetime "created_at"
-  end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -66,29 +51,12 @@ ActiveRecord::Schema.define(version: 20160106040354) do
     t.string   "name"
     t.string   "pay_offer"
     t.integer  "user_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "job_status",        default: 0, null: false
-    t.datetime "expiration_date"
-    t.text     "short_description"
-    t.text     "description"
-    t.string   "image_url"
-    t.string   "slug"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "job_status",      default: 0, null: false
     t.string   "skill_needed"
     t.string   "required_skills"
   end
-
-  create_table "rewards", force: :cascade do |t|
-    t.integer  "job_id"
-    t.text     "description"
-    t.integer  "value"
-    t.integer  "number_available"
-    t.date     "estimated_delivery"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
-  add_index "rewards", ["job_id"], name: "index_rewards_on_job_id", using: :btree
 
   create_table "skills", force: :cascade do |t|
     t.string   "skill"
@@ -151,8 +119,8 @@ ActiveRecord::Schema.define(version: 20160106040354) do
     t.text     "facebook"
     t.integer  "rate"
     t.string   "languages"
-    t.string   "user_skills"
     t.string   "avatar"
+    t.string   "user_skills"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -175,7 +143,6 @@ ActiveRecord::Schema.define(version: 20160106040354) do
   add_foreign_key "bids", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "job_skills", "jobs"
-  add_foreign_key "rewards", "jobs"
   add_foreign_key "skills", "users"
   add_foreign_key "votes", "skills"
   add_foreign_key "votes", "users"

@@ -15,8 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
-/.byebug_history
-/db/schema.rb
 
 # Ignore application configuration
 /config/application.yml

@@ -1,24 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "bootstrap/variables"; 
 @import "toastr";
+@import "profile";
+
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "style";
-@import "settings";
-
-// importing sass files
-@import "landing";
-@import "jobs";
-@import "variables";
-
-// wysiwyg bootstrap
-@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
-@import "bootstrap-datetimepicker";
 
 /*
- *= require font-awesome
+*= require jquery-ui
+*= require_self
+*= require bootstrap
+*= require font-awesome
  */
+
 
 body {
  	color: #565a5c;
@@ -26,7 +21,7 @@ body {
  }
 
 .container {
-	width: 80%;
+	width: auto;
 }
 
 .navbar-default {
@@ -149,11 +144,6 @@ margin-bottom: 25px;
 	font-weight: bold;
 	text-decoration: none;
 }
-
-small {
-  font-size: 80%;
-}
-
 //--------------------COMPLETION BAR-------------------//
 .completebar {
 	position:relative;

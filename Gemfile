@@ -15,39 +15,27 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'toastr-rails'
 gem 'acts-as-taggable-on'
+gem 'linkedin'
 
-
-# Font Awesome
-gem "font-awesome-rails"
-# Annotate Models
-gem 'annotate', github: 'ctran/annotate_models'
-# Simple Form
-gem 'simple_form'
-# Wysiwyg Bootstrap
-gem 'bootstrap-wysihtml5-rails', github: 'nerian/bootstrap-wysihtml5-rails'
-# Date Validator
-gem 'date_validator'
-# Date Picker
-gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
-# MomentJS
-gem 'momentjs-rails'
-# Friendly ID
-gem 'friendly_id', '~> 5.1.0'
-# ElasticSearch
-gem 'searchkick'
 
 # Gems User Page 
+gem 'simple_form'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'font-awesome-sass', '~> 4.4.0'
 gem "jquery-ui-rails"
 # gem "chartkick"
+
+#elasticsearch
+gem 'searchkick'
 
 #cocoon for nested forms
 gem "cocoon"

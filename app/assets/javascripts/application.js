@@ -13,15 +13,11 @@
 //= require bootstrap
 //= require jquery
 //= require jquery-ui
-//= require jquery_ujs
 //= require turbolinks
-//= require bootstrap-sprockets
-//= require bootstrap-wysihtml5
-//= require moment
-//= require bootstrap-datetimepicker
-//= require toastr
-//= require pickers
+//= require jquery_ujs
 //= require_tree .
+//= require bootstrap-sprockets
+//= require toastr
 
 jQuery(document).ready(function(){
 	jQuery('.skillbar').each(function(){

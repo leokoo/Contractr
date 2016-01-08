@@ -2,9 +2,9 @@
 <html>
 <head>
   <title>Contractr</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag :cocoon %>
+  <%= javascript_include_tag :cocoon%>
 
   <%= csrf_meta_tags %>
 
@@ -17,8 +17,7 @@
     <div class="container-fluid">
     	<%= yield %>
     </div> <!-- /container -->
-	
-	<%= render "shared/footer" %>
+
 
 </body>
 </html>
