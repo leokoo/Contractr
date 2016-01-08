@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160106040354) do
-=======
-ActiveRecord::Schema.define(version: 20160104082455) do
->>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,20 +53,10 @@ ActiveRecord::Schema.define(version: 20160104082455) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
-  create_table "job_skills", force: :cascade do |t|
-    t.string   "skill"
-    t.integer  "job_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "job_skills", ["job_id"], name: "index_job_skills_on_job_id", using: :btree
-
   create_table "jobs", force: :cascade do |t|
     t.string   "name"
     t.string   "pay_offer"
     t.integer  "user_id"
-<<<<<<< HEAD
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "job_status",        default: 0, null: false
@@ -79,48 +65,6 @@ ActiveRecord::Schema.define(version: 20160104082455) do
     t.text     "description"
     t.string   "image_url"
     t.string   "slug"
-=======
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "job_status",      default: 0, null: false
-    t.string   "skill_needed"
-    t.string   "required_skills"
-  end
-
-  create_table "skills", force: :cascade do |t|
-    t.string   "skill"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "skills", ["user_id"], name: "index_skills_on_user_id", using: :btree
-
-  create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context",       limit: 128
-    t.datetime "created_at"
-  end
-
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
-
-  create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
-  end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
-
-  create_table "tasks", force: :cascade do |t|
-    t.string  "name"
-    t.boolean "task_status", default: false
-    t.integer "job_id"
->>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
   end
 
   create_table "rewards", force: :cascade do |t|
@@ -157,39 +101,14 @@ ActiveRecord::Schema.define(version: 20160104082455) do
     t.string   "image"
     t.string   "phone_number"
     t.text     "description"
-    t.text     "twitter"
-    t.text     "facebook"
-    t.integer  "rate"
-    t.string   "languages"
-    t.string   "avatar"
-    t.string   "user_skills"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "votes", force: :cascade do |t|
-    t.integer  "up_vote",    default: 0
-    t.integer  "down_vote",  default: 0
-    t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "skill_id"
-  end
-
-  add_index "votes", ["skill_id"], name: "index_votes_on_skill_id", using: :btree
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
-
   add_foreign_key "bids", "jobs"
   add_foreign_key "bids", "users"
   add_foreign_key "identities", "users"
-<<<<<<< HEAD
   add_foreign_key "rewards", "jobs"
-=======
-  add_foreign_key "job_skills", "jobs"
-  add_foreign_key "skills", "users"
-  add_foreign_key "votes", "skills"
-  add_foreign_key "votes", "users"
->>>>>>> cc22f4d8021006001d06b92f081062ae9e43609d
 end

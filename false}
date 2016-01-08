@@ -1,3 +1,0 @@
-      invoke  active_record
-      create    db/migrate/20160104082455_create_tasks.rb
-Running via Spring preloader in process 25765
