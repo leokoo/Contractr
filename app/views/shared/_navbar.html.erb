@@ -27,7 +27,7 @@
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to "User Profile", user_path(current_user.id) %></li>
-              <li><a href="#">Account Settings</a></li>
+              <li><%= link_to "Messages",conversations_path %><li>
               <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>

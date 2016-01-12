@@ -1,6 +1,7 @@
 class SkillsController < ApplicationController
+  before_action :set_skills, only: [:show, :destroy]
+
   def show
-    @skill = Skill.find(params[:id])
   end
 
 	def new
@@ -17,7 +18,17 @@ class SkillsController < ApplicationController
   	end
   end
   
+  def destroy
+    @skill.destroy
+
+    redirect_to user_path(current_user), notice: "Skill Deleted"
+  end
+
   private
+  def set_skills
+    @skill = Skill.find(params[:id])
+  end
+
   def skill_params
   	params.require(:skill).permit(:skill)
   end

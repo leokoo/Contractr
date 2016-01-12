@@ -26,6 +26,13 @@ gem 'acts-as-taggable-on'
 gem 'linkedin'
 #elasticsearch
 gem 'searchkick'
+gem 'private_pub'
+gem 'thin'
+# brew link openssl --force
+# (if ERROR:  Error installing eventmachine:
+# 	ERROR: Failed to build gem native extension.)
+# To start server
+# rackup private_pub.ru -s thin -E production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

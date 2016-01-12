@@ -1,13 +1,20 @@
 <div class="row">
 	<div class="col-md-3">
 		<div class="center">
-		<%= image_tag avatar_url(@user), class: "avatar-full" %>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">Verification</div>
-		<div class="panel-body">
-			Email Address<br>
-			Phone Number
+			<%= image_tag avatar_url(@user), class: "avatar-full" %>
+
+			<% if current_user != @user %>
+				<div class="row-space-2">
+				<%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary wide" %>
+				</div>
+			<% end %>
+			
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Verification</div>
+			<div class="panel-body">
+				Email Address<br>
+				Phone Number
 			</div>
 		</div>
 	</div>
@@ -27,16 +34,21 @@
 
 <strong>Skills :</strong><br> 
 	<% @user.skills.each do |skill| %>
-		<%= skill.skill %> 
-			<% unless skill.user_id == current_user.id %>
-				<% unless current_user.votes.exists?(skill.votes) %>
-					<%= link_to("Like", user_skill_votes_path(current_user, skill, :up_vote => 1.to_i), :method => :post) %>
-				<% end %>
-				<% skill.votes.each do |vote|%>
-					<% if vote.user_id == current_user.id %>
-						<%= link_to("Unlike", user_skill_vote_path(current_user, skill, vote), :method => :delete) %>
+		<% if skill.user.user_skills.include?(skill.skill) %>
+			<%= skill.skill %>
+		<% else %>
+			<% skill.destroy %>
+		<% end %>
+		<% unless skill.user_id == current_user.id %>
+			<% unless current_user.votes.exists?(skill.votes) %>
+				<%= link_to("Like", user_skill_votes_path(current_user, skill, :up_vote => 1.to_i), :method=>:post, class: "vote-button"
+				)%>
+			<% end %>
+			<% skill.votes.each do |vote|%>
+				<% if vote.user_id == current_user.id %>
+					<%= link_to("Unlike", user_skill_vote_path(current_user, skill, vote), :method => :delete, class: "vote-button") %>
 				<% end %>	
 			<% end %>
 		<% end %>
-		| <%= link_to Vote.where("skill_id = #{skill.id}", "up_vote = 1").count, user_skill_path(@user, skill) %><br>
+		| <%= link_to Vote.where("skill_id = ? AND up_vote = ?", "#{skill.id}", 1).count, user_skill_path(@user, skill), id:"vote" %><br>
 	<% end %>

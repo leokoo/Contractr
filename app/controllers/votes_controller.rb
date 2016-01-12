@@ -15,6 +15,8 @@ class VotesController < ApplicationController
     # else
     if @vote.save
       redirect_to :back, notice: "Thank You for your vote on #{@skill.skill}"
+      # respond_to do |format|
+      #   format.jsd
     else
       redirect_to :back, notice: "You've already voted on #{@skill.skill}"
   	end

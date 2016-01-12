@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   end
 
   resources :skills
+
+  resources :conversations, only: [:index, :create] do
+    resources :messages, only: [:index, :create]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
