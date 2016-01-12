@@ -1,0 +1,9 @@
+
+
+	$('#vote').html(<%= Vote.where("skill_id = ? AND up_vote = ?", "#{@skill.id}", 1).count %>);
+		// $('#like').replaceWith(function(){
+		// 	(<%= link_to("Unlike", user_skill_vote_path(current_user, @skill, @vote), :method => :delete) %>);
+		// });
+
+
+// $("#like").attr("href");
