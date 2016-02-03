@@ -1,16 +1,3 @@
-# == Schema Information
-#
-# Table name: bids
-#
-#  id         :integer          not null, primary key
-#  bid_value  :integer
-#  user_id    :integer
-#  job_id     :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  bid_status :integer          default(0), not null
-#
-
 class BidsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_bid, only: [:show, :edit, :update, :destroy]
@@ -59,10 +46,10 @@ class BidsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
     def set_bid
       @bid = Bid.find(params[:id])
     end
-
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bid_params

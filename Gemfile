@@ -22,7 +22,8 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'toastr-rails'
-gem 'linkedin'
+# gem 'linkedin'
+gem 'acts-as-taggable-on'
 
 # Font Awesome
 gem "font-awesome-rails"

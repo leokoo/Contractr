@@ -1,37 +1,31 @@
-# == Schema Information
-#
-# Table name: jobs
-#
-#  id                :integer          not null, primary key
-#  name              :string
-#  pay_offer         :string
-#  user_id           :integer
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  job_status        :integer          default(0), not null
-#  expiration_date   :datetime
-#  short_description :text
-#  description       :text
-#  image_url         :string
-#
-
 class JobsController < ApplicationController
   before_action :set_jobs, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :home]
+
   def new
-  	@job = Job.new
+    @job = Job.new
+    @job_skills = JobSkill.all
   end
 
   def create
   	@job = current_user.jobs.new(job_params)
 
-  	if @job.save
-  		Job.reindex
-  		redirect_to jobs_path
-  	end
+    job_skill = []
+    if !params[:required_skills].nil?
+      params[:required_skills].each_key do |key|
+        job_skill << key
+      end
+    end 
+    @job.required_skills = job_skill
+    if @job.save
+
+      Job.reindex
+      redirect_to jobs_path, notice: "Job Created"
+    end
   end
 
   def edit
+    @job_skills = JobSkill.all
   end
 
   def show
@@ -39,10 +33,18 @@ class JobsController < ApplicationController
   end
 
   def update
-  	@job.update(job_params)
-    Job.reindex
+    job_skill = []
+    if !params[:required_skills].nil?
+      params[:required_skills].each_key do |key|
+        job_skill << key
+      end
+    end 
+    @job.required_skills = job_skill
+    if @job.update(job_params)
 
-    redirect_to jobs_path
+      Job.reindex
+      redirect_to jobs_path, notice: "Job Updated"
+    end
   end
 
   def index
@@ -56,9 +58,9 @@ class JobsController < ApplicationController
   end
 
   def destroy
-  	@job.destroy
+    @job = Job.find(params[:id])
+    @job.destroy
     Job.reindex
-
     redirect_to jobs_path
   end
 
@@ -68,6 +70,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-  	params.require(:job).permit(:name, :pay_offer, :job_status, :expiration_date, :short_description, :description, :image_url)
+  	params.require(:job).permit(:name, :pay_offer, :job_status, :expiration_date, :short_description, :description, :image_url, :required_skills)
   end
 end
